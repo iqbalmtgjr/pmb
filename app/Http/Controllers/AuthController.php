@@ -54,7 +54,7 @@ class AuthController extends Controller
         // $this->validator($request->all());
         $validator = Validator::make($request->all(), [
             'nama_siswa' => ['required', 'string', 'max:255'],
-            'nis_siswa' => ['required', 'integer'],
+            'nis_siswa' => ['required'],
             'hp_siswa' => ['required'],
             'email_akun_siswa' => ['required', 'string', 'email', 'max:255', 'unique:pmb_akun'],
             'prodi' => ['required'],
@@ -105,7 +105,7 @@ class AuthController extends Controller
         ]);
 
         toastr()->success('Akun berhasil dibuat!', 'Selamat');
-        return redirect()->back();
+        return redirect('login');
     }
 
     public function login()
@@ -136,7 +136,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             toastr()->success('Anda berhasil login!', 'Selamat');
-            return redirect('/');
+            return redirect('/info');
         }
 
         toastr()->error('Email atau Password Salah!', 'Gagal');
