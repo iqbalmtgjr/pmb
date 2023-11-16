@@ -15,16 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
-    return view('layouts.master');
-});
-
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('register', [AuthController::class, 'register'])->name('register');
-    Route::post('register', [AuthController::class, 'registerPost'])->name('register-post');
+    Route::get('register', [AuthController::class, 'register']);
+    Route::post('register', [AuthController::class, 'registerPost']);
     Route::get('/', [AuthController::class, 'login']);
-    Route::post('login', [AuthController::class, 'loginPost'])->name('login-post');
+    Route::post('login', [AuthController::class, 'loginPost']);
 });
 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+// Informasi
 Route::get('info', [InfoController::class, 'index']);
+Route::get('pembayaran', [InfoController::class, 'pembayaran']);
+Route::post('postMetodeBayar', [InfoController::class, 'postMetodeBayar']);

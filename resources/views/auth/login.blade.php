@@ -41,7 +41,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Login PMB</h1>
                                     </div>
-                                    <form class="user" role="form" method="POST" action="{{ route('login') }}">
+                                    <form class="user" role="form" method="POST" action="{{ url('login') }}">
                                         @csrf
                                         <div class="form-group">
                                             <input name="email_akun_siswa" type="email"
@@ -88,7 +88,7 @@
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div> --}}
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('register') }}">Buat Akun!</a>
+                                        <a class="small" href="{{ url('register') }}">Belum punya akun? Buat Akun Sekarang!</a>
                                     </div>
                                 </div>
                             </div>

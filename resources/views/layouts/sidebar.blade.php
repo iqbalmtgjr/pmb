@@ -24,48 +24,60 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Pendaftaran
+        Informasi
     </div>
 
     <li class="nav-item">
         <a class="nav-link" href="{{url('info')}}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Info Pembayaran</span></a>
+            <i class="fas fa-fw fa-chart-area">1</i>
+            <span>Informasi Siswa</span></a>
     </li>
 
     <li class="nav-item">
+        <a class="nav-link" href="{{url('pembayaran')}}">
+            <i class="fas fa-fw fa-chart-area">1</i>
+            <span>Informasi Pembayaran</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        Isi Form
+    </div>
+
+    <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
+            <i><strong>1</strong></i>
             <span>Form Calon Mahasiswa</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
+            <i><strong>2</strong></i>
             <span>Form Pendidikan Terakhir</span></a>
     </li>
     
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
+            <i><strong>3</strong></i>
             <span>Upload Nilai Semester</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
+            <i><strong>4</strong></i>
             <span>Program Studi</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
+            <i><strong>5</strong></i>
             <span>Form Orang Tua</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
+            <i><strong>6</strong></i>
             <span>Form Upload Berkas</span></a>
     </li>
 

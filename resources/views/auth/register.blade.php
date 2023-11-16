@@ -36,7 +36,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Buat Akun PMB</h1>
                             </div>
-                            <form class="user" method="POST" action="{{ route('register') }}">
+                            <form class="user" method="POST" action="{{ url('register') }}">
                                 @csrf
                                 <div class="form-group">
                                     <input name="nama_siswa" type="text"
@@ -166,7 +166,7 @@
                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
                             </div> --}}
                             <div class="text-center">
-                                <a class="small" href="{{ route('login') }}">Sudah punya akun? Login!</a>
+                                <a class="small" href="{{ url('/') }}">Sudah punya akun? Login!</a>
                             </div>
                         </div>
                     </div>
