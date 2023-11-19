@@ -1,12 +1,12 @@
-
- <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon">
+            {{-- <i class="fas fa-laugh-wink"></i> --}}
+            <img style="width: 40px" src="{{ asset('assets/img/stkip.png') }}" alt="">
         </div>
-        <div class="sidebar-brand-text mx-3">PMB Persada</div>
+        <div class="sidebar-brand-text mx-3">PMB Persada Khatulistiwa</div>
     </a>
 
     <!-- Divider -->
@@ -28,14 +28,14 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{url('info')}}">
-            <i class="fas fa-fw fa-chart-area">1</i>
+        <a class="nav-link" href="{{ url('info') }}">
+            <i class="fas fa-id-card"></i>
             <span>Informasi Siswa</span></a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{url('pembayaran')}}">
-            <i class="fas fa-fw fa-chart-area">1</i>
+        <a class="nav-link" href="{{ url('pembayaran') }}">
+            <i class="fas fa-hand-holding-usd"></i>
             <span>Informasi Pembayaran</span></a>
     </li>
 
@@ -46,7 +46,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ url('calon') }}">
             <i><strong>1</strong></i>
             <span>Form Calon Mahasiswa</span></a>
     </li>
@@ -56,7 +56,7 @@
             <i><strong>2</strong></i>
             <span>Form Pendidikan Terakhir</span></a>
     </li>
-    
+
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
             <i><strong>3</strong></i>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CalonController;
 use App\Http\Controllers\InfoController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,8 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('info', [InfoController::class, 'index']);
 Route::get('pembayaran', [InfoController::class, 'pembayaran']);
 Route::post('postMetodeBayar', [InfoController::class, 'postMetodeBayar']);
+Route::post('uploadBukti', [InfoController::class, 'uploadBukti']);
+
+// Data Calon Mahasiswa
+Route::get('calon', [CalonController::class, 'index']);
+Route::post('postCalon', [CalonController::class, 'store']);
