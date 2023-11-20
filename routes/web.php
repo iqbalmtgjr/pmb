@@ -31,6 +31,7 @@ Route::get('info', [InfoController::class, 'index']);
 Route::get('pembayaran', [InfoController::class, 'pembayaran']);
 Route::post('postMetodeBayar', [InfoController::class, 'postMetodeBayar']);
 Route::post('uploadBukti', [InfoController::class, 'uploadBukti']);
+Route::get('infoTes', [InfoController::class, 'infoTes']);
 
 // Data Calon Mahasiswa
 Route::get('calon', [CalonController::class, 'index']);
@@ -39,3 +40,6 @@ Route::post('postCalon', [CalonController::class, 'store']);
 // Data Pendidikan Terakhir
 Route::get('pendidikan', [PendidikanController::class, 'index']);
 Route::post('postPendidikan', [PendidikanController::class, 'postPendidikan']);
+
+// Data Prodi\
+// Route::get('prodi', [Prodi])

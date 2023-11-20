@@ -39,8 +39,8 @@
             <span>Informasi Pembayaran</span></a>
     </li>
 
-    <li class="nav-item {{ request()->is('pembayaran') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ url('pembayaran') }}">
+    <li class="nav-item {{ request()->is('infoTes') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('infoTes') }}">
             <i class="fas fa-tasks"></i>
             <span>Informasi Tes PMB</span></a>
     </li>
@@ -63,27 +63,21 @@
             <span>Form Pendidikan Terakhir</span></a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+    <li class="nav-item {{ request()->is('prodi') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('prodi') }}">
             <i><strong>3</strong></i>
-            <span>Upload Nilai Semester</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i><strong>4</strong></i>
             <span>Program Studi</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <i><strong>5</strong></i>
+            <i><strong>4</strong></i>
             <span>Form Orang Tua</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
-            <i><strong>6</strong></i>
+            <i><strong>5</strong></i>
             <span>Form Upload Berkas</span></a>
     </li>
 

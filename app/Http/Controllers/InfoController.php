@@ -8,6 +8,8 @@ use App\Models\Pmbupload;
 use Illuminate\Http\Request;
 use App\Models\Pmbpenerimaan;
 use App\Models\Biayakuliahpmb;
+use App\Models\Pmbjadwal;
+use App\Models\Pmbprodi;
 use Illuminate\Support\Facades\Validator;
 
 class InfoController extends Controller
@@ -18,7 +20,8 @@ class InfoController extends Controller
             ->leftJoin('pmb_prodi', 'pmb_akun.pengenal_akun', '=', 'pmb_prodi.prodi_id_siswa')
             ->where('pmb_akun.pengenal_akun', auth()->user()->pengenal_akun)
             ->first();
-        return view('info.index', compact('data'));
+        $cekputus = $cekputus = Pmbpenerimaan::where('siswa_penerimaan', auth()->user()->pengenal_akun)->where('umumkan', 1)->first();
+        return view('info.index', compact('data', 'cekputus'));
     }
 
     public function pembayaran()
@@ -27,7 +30,8 @@ class InfoController extends Controller
         $data = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
         $biaya = Biayakuliahpmb::all();
         $cekbukti = Pmbupload::where('upload_id_siswa', auth()->user()->pengenal_akun)->first();
-        return view('info.pembayaran', compact('cekputus', 'data', 'biaya', 'cekbukti'));
+        $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
+        return view('info.pembayaran', compact('cekputus', 'data', 'biaya', 'cekbukti', 'cekjalur'));
     }
 
     public function postMetodeBayar(Request $request)
@@ -78,5 +82,13 @@ class InfoController extends Controller
 
         toastr()->success('Bukti berhasil diupload!', 'Selamat');
         return redirect()->back();
+    }
+
+    public function infoTes()
+    {
+        $gelombang = 1;
+        $data = Pmbjadwal::find($gelombang);
+        $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
+        return view('info.infotes', compact('data', 'cekjalur'));
     }
 }
