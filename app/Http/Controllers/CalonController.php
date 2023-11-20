@@ -44,7 +44,7 @@ class CalonController extends Controller
         $data = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
         $data->update($request->all());
 
-        toastr()->success('Data berhasil diinput!', 'Selamat');
-        return redirect()->back();
+        toastr()->success('Data berhasil diinput!, Silahkan lanjutkan mengisi data sekolah', 'Selamat');
+        return redirect('pendidikan');
     }
 }

@@ -6,7 +6,7 @@
             {{-- <i class="fas fa-laugh-wink"></i> --}}
             <img style="width: 40px" src="{{ asset('assets/img/stkip.png') }}" alt="">
         </div>
-        <div class="sidebar-brand-text mx-3">PMB Persada Khatulistiwa</div>
+        <div class="sidebar-brand-text mx-3">SIMPEKHA</div>
     </a>
 
     <!-- Divider -->
@@ -27,16 +27,22 @@
         Informasi
     </div>
 
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('info') }}">
+    <li class="nav-item {{ request()->is('info') ? 'active' : '' }}">
+        <a class="nav-link " href="{{ url('info') }}">
             <i class="fas fa-id-card"></i>
             <span>Informasi Siswa</span></a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ request()->is('pembayaran') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('pembayaran') }}">
             <i class="fas fa-hand-holding-usd"></i>
             <span>Informasi Pembayaran</span></a>
+    </li>
+
+    <li class="nav-item {{ request()->is('pembayaran') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('pembayaran') }}">
+            <i class="fas fa-tasks"></i>
+            <span>Informasi Tes PMB</span></a>
     </li>
 
     <hr class="sidebar-divider">
@@ -45,14 +51,14 @@
         Isi Form
     </div>
 
-    <li class="nav-item">
+    <li class="nav-item {{ request()->is('calon') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('calon') }}">
             <i><strong>1</strong></i>
             <span>Form Calon Mahasiswa</span></a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+    <li class="nav-item {{ request()->is('pendidikan') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('pendidikan') }}">
             <i><strong>2</strong></i>
             <span>Form Pendidikan Terakhir</span></a>
     </li>

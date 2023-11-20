@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalonController;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\PendidikanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,3 +35,7 @@ Route::post('uploadBukti', [InfoController::class, 'uploadBukti']);
 // Data Calon Mahasiswa
 Route::get('calon', [CalonController::class, 'index']);
 Route::post('postCalon', [CalonController::class, 'store']);
+
+// Data Pendidikan Terakhir
+Route::get('pendidikan', [PendidikanController::class, 'index']);
+Route::post('postPendidikan', [PendidikanController::class, 'postPendidikan']);
