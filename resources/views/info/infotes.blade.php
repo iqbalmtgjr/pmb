@@ -43,14 +43,11 @@
                             tes.
                         </p>
                     </div>
+                @else
+                    <h5 class="text-danger mt-5">Silahkan menunggu sampai panitia memberikan info ujian dan akun yang digunakan untuk
+                        ujian dihalaman ini.</h5>
+                @endif
             </div>
-        @else
-            <div class="card-body">
-                <h5 class="text-danger">Silahkan menunggu sampai panitia memberikan info ujian dan akun yang digunakan untuk
-                    ujian dihalaman
-                    ini.</h5>
-            </div>
-        @endif
         @endif
     </div>
     <div class="form-group mt-2">

@@ -20,7 +20,7 @@
                                 SMA</option>
                             <option value="smk"
                                 @if ($data == true && $data->jenis_sekolah != null) {{ $data->jenis_sekolah == 'smk' ? 'selected' : '' }} @else {{ old('jenis_sekolah') == 'smk' ? 'selected' : '' }} @endif>
-                                SMA
+                                SMK
                             </option>
                             <option value="ma"
                                 @if ($data == true && $data->jenis_sekolah != null) {{ $data->jenis_sekolah == 'ma' ? 'selected' : '' }} @else {{ old('jenis_sekolah') == 'ma' ? 'selected' : '' }} @endif>

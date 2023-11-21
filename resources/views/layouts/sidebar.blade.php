@@ -63,10 +63,10 @@
             <span>Form Pendidikan Terakhir</span></a>
     </li>
 
-    <li class="nav-item {{ request()->is('prodi') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ url('prodi') }}">
+    <li class="nav-item {{ request()->is('info-pmb') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('info-pmb') }}">
             <i><strong>3</strong></i>
-            <span>Program Studi</span></a>
+            <span>Perolehan Informasi PMB</span></a>
     </li>
 
     <li class="nav-item">

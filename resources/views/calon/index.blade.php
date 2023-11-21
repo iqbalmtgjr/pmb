@@ -220,7 +220,7 @@
                             <span class="input-group-text" id="basic-addon1">+62</span>
                         </div>
                         <input type="number" class="form-control @error('hp_siswa') is-invalid @enderror"
-                            id="inputNOHP" name="hp_siswa" placeholder="Nomor HP"
+                            id="inputNOHP" name="hp_siswa" placeholder="8xxxxxxxxxx"
                             value="{{ $data->hp_siswa != null ? $data->hp_siswa : old('hp_siswa') }}">
                         @error('hp_siswa')
                             <span class="invalid-feedback" role="alert">

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalonController;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\InfopmbController;
 use App\Http\Controllers\PendidikanController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,5 +42,6 @@ Route::post('postCalon', [CalonController::class, 'store']);
 Route::get('pendidikan', [PendidikanController::class, 'index']);
 Route::post('postPendidikan', [PendidikanController::class, 'postPendidikan']);
 
-// Data Prodi\
-// Route::get('prodi', [Prodi])
+// Data Info PMB
+Route::get('info-pmb', [InfopmbController::class, 'index']);
+Route::post('postInfopmb', [InfopmbController::class, 'store']);

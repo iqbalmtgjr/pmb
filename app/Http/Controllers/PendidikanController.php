@@ -106,7 +106,7 @@ class PendidikanController extends Controller
             }
         }
 
-        toastr()->success('Data berhasil diinput!', 'Selamat');
-        return redirect()->back();
+        toastr()->success('Data berhasil diinput! Silahkan isi data informasi dibawah ini', 'Selamat');
+        return redirect('info-pmb');
     }
 }
