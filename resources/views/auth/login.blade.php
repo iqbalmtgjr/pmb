@@ -35,7 +35,7 @@
                     <div class="col-12">
                         <img style="width: 100px" src="{{ asset('assets/img/stkip.png') }}" alt="logo-stkip">
                         <h2 class="mt-3" style="color: white">Selamat Datang di <br> Sistem Informasi Pendaftaran
-                            Mahasiswa
+                            Mahasiswa <br> (SIPEMA)
                         </h2>
                     </div>
                 </div>
