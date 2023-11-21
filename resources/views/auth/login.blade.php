@@ -31,10 +31,18 @@
         <div class="row justify-content-center">
 
             <div class="col-xl-10 col-lg-12 col-md-9">
-
+                <div class="row mt-3 text-center">
+                    <div class="col-12">
+                        <img style="width: 100px" src="{{ asset('assets/img/stkip.png') }}" alt="logo-stkip">
+                        <h2 class="mt-3" style="color: white">Selamat Datang di <br> Sistem Informasi Pendaftaran
+                            Mahasiswa
+                        </h2>
+                    </div>
+                </div>
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
+
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                             <div class="col-lg-6">
