@@ -7,43 +7,43 @@
         </div>
         <div class="card-body">
             <form action="postInfopmb" method="post">
-            @csrf
-            <div class="form-group row">
-                <label for="namainforman" class="col-sm-2 col-form-label">Nama<strong
-                        style="color: red">*</strong></label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control  @error('nama_informan') is-invalid @enderror"
-                        id="namainforman" name="nama_informan" placeholder="Nama"
-                        value="{{ $data == true && $data->nama_informan != null ? $data->nama_informan : old('nama_informan') }}">
-                    @error('nama_informan')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                @csrf
+                <div class="form-group row">
+                    <label for="namainforman" class="col-sm-2 col-form-label">Nama<strong style="color: red">*</strong></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control  @error('nama_informan') is-invalid @enderror"
+                            id="namainforman" name="nama_informan" placeholder="Nama"
+                            value="{{ $data == true && $data->nama_informan != null ? $data->nama_informan : old('nama_informan') }}">
+                        @error('nama_informan')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="nohp" class="col-sm-2 col-form-label">No HP<strong
-                        style="color: red">*</strong></label>
-                {{-- <div class="col-sm-10"> --}}
+                <div class="form-group row">
+                    <label for="nohp" class="col-sm-2 col-form-label">No HP<strong style="color: red">*</strong></label>
+                    {{-- <div class="col-sm-10"> --}}
                     <div class="col-sm-10 input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">+62</span>
                         </div>
-                        <input type="number" class="form-control @error('no_hp') is-invalid @enderror" id="inputNOHP" name="no_hp" placeholder="8xxxxxxxxx" value="{{ $data == true && $data->no_hp != null ? $data->no_hp : old('no_hp') }}">
+                        <input type="number" class="form-control @error('no_hp') is-invalid @enderror" id="inputNOHP"
+                            name="no_hp" placeholder="8xxxxxxxxx"
+                            value="{{ $data == true && $data->no_hp != null ? $data->no_hp : old('no_hp') }}">
                     </div>
                     @error('no_hp')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                {{-- </div> --}}
-            </div>
-            <div class="form-group row">
-                <label for="nohp" class="col-sm-2 col-form-label">Media Informasi<strong
-                        style="color: red">*</strong></label>
-                <div class="col-sm-10">
-                    <select id="media_info" name="media_info"
+                    {{-- </div> --}}
+                </div>
+                <div class="form-group row">
+                    <label for="nohp" class="col-sm-2 col-form-label">Media Informasi<strong
+                            style="color: red">*</strong></label>
+                    <div class="col-sm-10">
+                        <select id="media_info" name="media_info"
                             class="form-control  @error('media_info') is-invalid @enderror">
                             <option value="">-- Pilih Media Informasi --</option>
                             <option value="brosur"
@@ -78,15 +78,15 @@
                                 Poster
                             </option>
                         </select>
-                    @error('no_hp')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                        @error('no_hp')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
     <button type="submit" class="btn btn-primary btn-md mt-2 float-right">Simpan dan Lanjutkan</button>
-            </form>
+    </form>
 @endsection

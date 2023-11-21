@@ -44,7 +44,8 @@
                         </p>
                     </div>
                 @else
-                    <h5 class="text-danger mt-5">Silahkan menunggu sampai panitia memberikan info ujian dan akun yang digunakan untuk
+                    <h5 class="text-danger mt-5">Silahkan menunggu sampai panitia memberikan info ujian dan akun yang
+                        digunakan untuk
                         ujian dihalaman ini.</h5>
                 @endif
             </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalonController;
+use App\Http\Controllers\FileuploadController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\InfopmbController;
 use App\Http\Controllers\OrtuController;
@@ -50,3 +51,14 @@ Route::post('postInfopmb', [InfopmbController::class, 'store']);
 // Data Orang Tua Siswa
 Route::get('ortu', [OrtuController::class, 'index']);
 Route::post('postOrtu', [OrtuController::class, 'store']);
+
+// Data Upload Berkas
+Route::get('upload', [FileuploadController::class, 'index']);
+Route::post('postFoto', [FileuploadController::class, 'foto']);
+Route::post('postAkta', [FileuploadController::class, 'akta']);
+Route::post('postIjazah', [FileuploadController::class, 'ijazah']);
+Route::post('postKk', [FileuploadController::class, 'kk']);
+Route::post('postKtp', [FileuploadController::class, 'ktp']);
+Route::post('postSkck', [FileuploadController::class, 'skck']);
+Route::post('postSkkb', [FileuploadController::class, 'skkb']);
+Route::post('postSkl', [FileuploadController::class, 'skl']);

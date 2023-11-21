@@ -252,8 +252,7 @@
                                         <option
                                             value="panti asuhan"{{ $data->jenis_tiggal_siswa == 'panti asuhan' ? 'selected' : '' }}>
                                             Panti Asuhan</option>
-                                        <option
-                                            value="wali"{{ $data->jenis_tiggal_siswa == 'wali' ? 'selected' : '' }}>
+                                        <option value="wali"{{ $data->jenis_tiggal_siswa == 'wali' ? 'selected' : '' }}>
                                             Wali</option>
                                         <option
                                             value="lainnya"{{ $data->jenis_tiggal_siswa == 'lainnya' ? 'selected' : '' }}>
@@ -277,7 +276,8 @@
                                         <select name="transpot_siswa"
                                             class="form-control @error('transpot_siswa') is-invalid @enderror">
                                             <option value="">-- Pilih Jenis Transfortasi --</option>
-                                            <option value="jalan kaki"{{ $data->transpot_siswa == 'jalan kaki' ? 'selected' : '' }}>
+                                            <option
+                                                value="jalan kaki"{{ $data->transpot_siswa == 'jalan kaki' ? 'selected' : '' }}>
                                                 Jalan Kaki</option>
                                             <option
                                                 value="sepeda motor"{{ $data->transpot_siswa == 'sepeda motor' ? 'selected' : '' }}>

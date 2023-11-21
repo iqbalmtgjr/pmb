@@ -6,18 +6,11 @@
             {{-- <i class="fas fa-laugh-wink"></i> --}}
             <img style="width: 40px" src="{{ asset('assets/img/stkip.png') }}" alt="">
         </div>
-        <div class="sidebar-brand-text mx-3">SIMPEKHA</div>
+        <div class="sidebar-brand-text mx-3">SIPEMA</div>
     </a>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
-    {{-- <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li> --}}
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -75,8 +68,8 @@
             <span>Form Orang Tua</span></a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+    <li class="nav-item {{ request()->is('upload') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('upload') }}">
             <i><strong>5</strong></i>
             <span>Form Upload Berkas</span></a>
     </li>
