@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalonController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\InfopmbController;
+use App\Http\Controllers\OrtuController;
 use App\Http\Controllers\PendidikanController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,3 +46,7 @@ Route::post('postPendidikan', [PendidikanController::class, 'postPendidikan']);
 // Data Info PMB
 Route::get('info-pmb', [InfopmbController::class, 'index']);
 Route::post('postInfopmb', [InfopmbController::class, 'store']);
+
+// Data Orang Tua Siswa
+Route::get('ortu', [OrtuController::class, 'index']);
+Route::post('postOrtu', [OrtuController::class, 'store']);

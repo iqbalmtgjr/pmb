@@ -69,8 +69,8 @@
             <span>Perolehan Informasi PMB</span></a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+    <li class="nav-item {{ request()->is('ortu') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('ortu') }}">
             <i><strong>4</strong></i>
             <span>Form Orang Tua</span></a>
     </li>

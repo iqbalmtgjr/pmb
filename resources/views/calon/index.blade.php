@@ -244,8 +244,20 @@
                                             value="kontrakan"{{ $data->jenis_tiggal_siswa == 'kontrakan' ? 'selected' : '' }}>
                                             Kontrakan/Kost</option>
                                         <option
-                                            value="rumah_sendiri"{{ $data->jenis_tiggal_siswa == 'rumah_sendiri' ? 'selected' : '' }}>
+                                            value="rumah sendiri"{{ $data->jenis_tiggal_siswa == 'rumah sendiri' ? 'selected' : '' }}>
                                             Rumah Keluarga</option>
+                                        <option
+                                            value="asrama"{{ $data->jenis_tiggal_siswa == 'asrama' ? 'selected' : '' }}>
+                                            Asrama</option>
+                                        <option
+                                            value="panti asuhan"{{ $data->jenis_tiggal_siswa == 'panti asuhan' ? 'selected' : '' }}>
+                                            Panti Asuhan</option>
+                                        <option
+                                            value="wali"{{ $data->jenis_tiggal_siswa == 'wali' ? 'selected' : '' }}>
+                                            Wali</option>
+                                        <option
+                                            value="lainnya"{{ $data->jenis_tiggal_siswa == 'lainnya' ? 'selected' : '' }}>
+                                            Lainnya</option>
                                     </select>
                                     @error('jenis_tiggal_siswa')
                                         <span class="invalid-feedback" role="alert">
@@ -265,14 +277,17 @@
                                         <select name="transpot_siswa"
                                             class="form-control @error('transpot_siswa') is-invalid @enderror">
                                             <option value="">-- Pilih Jenis Transfortasi --</option>
-                                            <option value="ortu"{{ $data->transpot_siswa == 'ortu' ? 'selected' : '' }}>
-                                                Bersama orang tua</option>
+                                            <option value="jalan kaki"{{ $data->transpot_siswa == 'jalan kaki' ? 'selected' : '' }}>
+                                                Jalan Kaki</option>
                                             <option
-                                                value="kontrakan"{{ $data->transpot_siswa == 'kontrakan' ? 'selected' : '' }}>
-                                                Kontrakan/Kost</option>
+                                                value="sepeda motor"{{ $data->transpot_siswa == 'sepeda motor' ? 'selected' : '' }}>
+                                                Sepeda Motor</option>
                                             <option
-                                                value="rumah_sendiri"{{ $data->transpot_siswa == 'rumah_sendiri' ? 'selected' : '' }}>
-                                                Rumah Keluarga</option>
+                                                value="angkutan umum"{{ $data->transpot_siswa == 'angkutan umum' ? 'selected' : '' }}>
+                                                Angkutan Umum</option>
+                                            <option
+                                                value="lainnya"{{ $data->transpot_siswa == 'lainnya' ? 'selected' : '' }}>
+                                                Lainnya</option>
                                         </select>
                                         @error('transpot_siswa')
                                             <span class="invalid-feedback" role="alert">
