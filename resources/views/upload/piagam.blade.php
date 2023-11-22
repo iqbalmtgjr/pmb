@@ -1,18 +1,18 @@
-<div class="modal fade" id="ktp" tabindex="-1" role="dialog" aria-labelledby="ktpLabel" aria-hidden="true">
+<div class="modal fade" id="piagam" tabindex="-1" role="dialog" aria-labelledby="piagamLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ktpLabel">Upload File KTP</h5>
+                <h5 class="modal-title" id="piagamLabel">Upload Piagam</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('postKtp') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('postPiagam') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="file" class="form-control @error('ktp') is-invalid @enderror" name="ktp">
+                    <input type="file" class="form-control @error('piagam') is-invalid @enderror" name="piagam">
                     <p class="text-warning">(Format file : .pdf, Besar file maksimal 5MB)</p>
-                    @error('ktp')
+                    @error('piagam')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

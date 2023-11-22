@@ -34,9 +34,8 @@
                 <div class="row mt-3 text-center">
                     <div class="col-12">
                         <img style="width: 100px" src="{{ asset('assets/img/stkip.png') }}" alt="logo-stkip">
-                        <h2 class="mt-3" style="color: white">Selamat Datang di <br> Sistem Informasi Pendaftaran
-                            Mahasiswa <br> (SIPEMA)
-                        </h2>
+                        <H4 class="mt-3" style="color: white">SELAMAT DATANG DI <br> SISTEM INFORMASI PENDAFTARAN MAHASISWA (SIPEMA)
+                        </H4>
                     </div>
                 </div>
                 <div class="card o-hidden border-0 shadow-lg my-5">

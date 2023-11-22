@@ -10,8 +10,13 @@
             <div class="modal-body">
                 <form action="{{ url('postAkta') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="file" class="form-control" name="akta">
-                    <p class="text-warning">(Format file : .jpg|pdf, Besar file maksimal 5MB)</p>
+                    <input type="file" class="form-control @error('akta_lahir') is-invalid @enderror" name="akta_lahir">
+                    <p class="text-warning">(Format file : .pdf, Besar file maksimal 5MB)</p>
+                    @error('akta_lahir')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

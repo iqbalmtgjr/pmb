@@ -61,7 +61,7 @@ class InfoController extends Controller
     {
         // dd($request->all());
         $validator = Validator::make($request->all(), [
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
+            'foto' => 'required|image|mimes:png,jpg|max:5120',
         ]);
 
         if ($validator->fails()) {
@@ -72,16 +72,28 @@ class InfoController extends Controller
                 ->withInput();
         }
 
+        $data = Pmbupload::where('upload_id_siswa', auth()->user()->pengenal_akun)->first();
         $extension = $request->foto->extension();
-        $nama_foto = round(microtime(true) * 1000) . '.' . $extension;
-        $request->file('foto')->move(public_path('assets/img/bukti/'), $nama_foto);
-        Pmbupload::create([
-            'upload_id_siswa' => auth()->user()->pengenal_akun,
-            'pembayaran_upload' => $nama_foto
-        ]);
+        $nama_file = round(microtime(true) * 1000) . '.' . $extension;
+        if ($data == false) {
+            $request->file('foto')->move(public_path('assets/berkas/bukti/'), $nama_file);
+            Pmbupload::create([
+                'upload_id_siswa' => auth()->user()->pengenal_akun,
+                'foto_upload' => $nama_file
+            ]);
 
-        toastr()->success('Bukti berhasil diupload!', 'Selamat');
-        return redirect()->back();
+            toastr()->success('Bukti berhasil diupload!', 'Selamat');
+            return redirect()->back();
+        } else {
+            $request->file('foto')->move(public_path('assets/berkas/bukti/'), $nama_file);
+            $data->update([
+                'upload_id_siswa' => auth()->user()->pengenal_akun,
+                'pembayaran_upload' => $nama_file
+            ]);
+
+            toastr()->success('Bukti berhasil diupload!', 'Selamat');
+            return redirect()->back();
+        }
     }
 
     public function infoTes()

@@ -54,6 +54,7 @@ Route::post('postOrtu', [OrtuController::class, 'store']);
 
 // Data Upload Berkas
 Route::get('upload', [FileuploadController::class, 'index']);
+Route::post('postBukti', [FileuploadController::class, 'bukti']);
 Route::post('postFoto', [FileuploadController::class, 'foto']);
 Route::post('postAkta', [FileuploadController::class, 'akta']);
 Route::post('postIjazah', [FileuploadController::class, 'ijazah']);
@@ -62,3 +63,4 @@ Route::post('postKtp', [FileuploadController::class, 'ktp']);
 Route::post('postSkck', [FileuploadController::class, 'skck']);
 Route::post('postSkkb', [FileuploadController::class, 'skkb']);
 Route::post('postSkl', [FileuploadController::class, 'skl']);
+Route::post('postPiagam', [FileuploadController::class, 'piagam']);
