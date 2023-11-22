@@ -8,6 +8,7 @@ use App\Models\Pmbupload;
 use Illuminate\Http\Request;
 use App\Models\Pmbpenerimaan;
 use App\Models\Biayakuliahpmb;
+use App\Models\Buktibayar;
 use App\Models\Pmbjadwal;
 use App\Models\Pmbprodi;
 use Illuminate\Support\Facades\Validator;
@@ -20,12 +21,17 @@ class InfoController extends Controller
             ->leftJoin('pmb_prodi', 'pmb_akun.pengenal_akun', '=', 'pmb_prodi.prodi_id_siswa')
             ->where('pmb_akun.pengenal_akun', auth()->user()->pengenal_akun)
             ->first();
-        $cekputus = $cekputus = Pmbpenerimaan::where('siswa_penerimaan', auth()->user()->pengenal_akun)->where('umumkan', 1)->first();
-        return view('info.index', compact('data', 'cekputus'));
+        $cekputus = Pmbpenerimaan::where('siswa_penerimaan', auth()->user()->pengenal_akun)->where('umumkan', 1)->first();
+        if ($cekputus == true && $cekputus->status_penerimaan == 1) {
+            return redirect('pembayaran');
+        } else {
+            return view('info.index', compact('data', 'cekputus'));
+        }
     }
 
     public function pembayaran()
     {
+        $gelombang = 1;
         $cekputus = Pmbpenerimaan::where('siswa_penerimaan', auth()->user()->pengenal_akun)->where('umumkan', 1)->first();
         $data = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
         $biaya = Biayakuliahpmb::all();
@@ -102,5 +108,19 @@ class InfoController extends Controller
         $data = Pmbjadwal::find($gelombang);
         $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
         return view('info.infotes', compact('data', 'cekjalur'));
+    }
+
+    public function konfirmasi()
+    {
+        $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
+        $biaya = Biayakuliahpmb::all();
+        $bayar = Buktibayar::where('akunb_msiswa', auth()->user()->pengenal_akun)->first();
+        return view('info.konfirmasi_bayar', compact('cekjalur', 'biaya', 'bayar'));
+    }
+
+    public function postKonfirmasi(Request $request)
+    {
+        dd($request->all());
+        return redirect()->back();
     }
 }

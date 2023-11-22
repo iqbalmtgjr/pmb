@@ -36,6 +36,10 @@ Route::post('postMetodeBayar', [InfoController::class, 'postMetodeBayar']);
 Route::post('uploadBukti', [InfoController::class, 'uploadBukti']);
 Route::get('infoTes', [InfoController::class, 'infoTes']);
 
+// Konfirmasi Bayar AKhir
+Route::get('pembayaran/konfirmasi', [InfoController::class, 'konfirmasi']);
+Route::post('postKonfirmasi', [InfoController::class, 'postKonfirmasi']);
+
 // Data Calon Mahasiswa
 Route::get('calon', [CalonController::class, 'index']);
 Route::post('postCalon', [CalonController::class, 'store']);

@@ -14,7 +14,7 @@
                 <div class="form-group row">
                     <label for="inputNIK" class="col-sm-2 col-form-label">NIK<strong style="color: red">*</strong></label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control @error('nik_siswa') is-invalid @enderror" id="inputNIK"
+                        <input type="number" class="form-control @error('nik_siswa') is-invalid @enderror" id="inputNIK"
                             name="nik_siswa" placeholder="Nomor Induk Kependudukan"
                             value="{{ $data->nik_siswa != null ? $data->nik_siswa : old('nik_siswa') }}">
                         @error('nik_siswa')
@@ -306,7 +306,7 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control @error('kps_siswa') is-invalid @enderror"
                             id="inputKPS" name="kps_siswa" placeholder="Nomor Kartu Perlindungan Sosial"
-                            value="{{ $data->pos_siswa != null ? $data->pos_siswa : old('kps_siswa') }}">
+                            value="{{ $data->kps_siswa != null ? $data->kps_siswa : old('kps_siswa') }}">
                         @error('kps_siswa')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

@@ -9,7 +9,7 @@
             <form action="postInfopmb" method="post">
                 @csrf
                 <div class="form-group row">
-                    <label for="namainforman" class="col-sm-2 col-form-label">Nama<strong style="color: red">*</strong></label>
+                    <label for="namainforman" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control  @error('nama_informan') is-invalid @enderror"
                             id="namainforman" name="nama_informan" placeholder="Nama"
@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="nohp" class="col-sm-2 col-form-label">No HP<strong style="color: red">*</strong></label>
+                    <label for="nohp" class="col-sm-2 col-form-label">No HP</label>
                     {{-- <div class="col-sm-10"> --}}
                     <div class="col-sm-10 input-group">
                         <div class="input-group-prepend">

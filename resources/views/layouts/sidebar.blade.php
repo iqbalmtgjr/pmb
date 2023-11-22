@@ -26,7 +26,7 @@
             <span>Informasi Siswa</span></a>
     </li>
 
-    <li class="nav-item {{ request()->is('pembayaran') ? 'active' : '' }}">
+    <li class="nav-item {{ request()->is('pembayaran') || request()->is('pembayaran/konfirmasi') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('pembayaran') }}">
             <i class="fas fa-hand-holding-usd"></i>
             <span>Informasi Pembayaran</span></a>

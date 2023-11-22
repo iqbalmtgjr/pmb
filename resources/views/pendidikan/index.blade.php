@@ -125,7 +125,7 @@
                         <label for="namasekolah" class="col-sm-2 col-form-label">SEMESTER 1<strong
                                 style="color: red">*</strong></label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control  @error('nilai_satu') is-invalid @enderror"
+                            <input type="text" class="form-control  @error('nilai_satu') is-invalid @enderror"
                                 id="namasekolah" name="nilai_satu" placeholder="Masukkan Nilai Rata-rata"
                                 value="{{ $data == true && $data->nilai_satu != null ? $data->nilai_satu : old('nilai_satu') }}">
                             @error('nilai_satu')
@@ -139,7 +139,7 @@
                         <label for="namasekolah" class="col-sm-2 col-form-label">SEMESTER 2<strong
                                 style="color: red">*</strong></label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control  @error('nilai_dua') is-invalid @enderror"
+                            <input type="text" class="form-control  @error('nilai_dua') is-invalid @enderror"
                                 id="namasekolah" name="nilai_dua" placeholder="Masukkan Nilai Rata-rata"
                                 value="{{ $data == true && $data->nilai_dua != null ? $data->nilai_dua : old('nilai_dua') }}">
                             @error('nilai_dua')
@@ -153,7 +153,7 @@
                         <label for="namasekolah" class="col-sm-2 col-form-label">SEMESTER 3<strong
                                 style="color: red">*</strong></label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control  @error('nilai_tiga') is-invalid @enderror"
+                            <input type="text" class="form-control  @error('nilai_tiga') is-invalid @enderror"
                                 id="namasekolah" name="nilai_tiga" placeholder="Masukkan Nilai Rata-rata"
                                 value="{{ $data == true && $data->nilai_tiga != null ? $data->nilai_tiga : old('nilai_tiga') }}">
                             @error('nilai_tiga')
@@ -167,7 +167,7 @@
                         <label for="namasekolah" class="col-sm-2 col-form-label">SEMESTER 4<strong
                                 style="color: red">*</strong></label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control  @error('nilai_empat') is-invalid @enderror"
+                            <input type="text" class="form-control  @error('nilai_empat') is-invalid @enderror"
                                 id="namasekolah" name="nilai_empat" placeholder="Masukkan Nilai Rata-rata"
                                 value="{{ $data == true && $data->nilai_empat != null ? $data->nilai_empat : old('nilai_empat') }}">
                             @error('nilai_empat')
