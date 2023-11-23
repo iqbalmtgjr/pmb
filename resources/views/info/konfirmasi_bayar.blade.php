@@ -156,9 +156,6 @@
                                         <td>{{ number_format($item->jlh_bayar, 2, ',', '.') }}</td>
                                         <td>
                                             @if (!empty($item->bukti_bayar))
-                                                {{-- <a href="<?php //echo base_url();
-                                                ?>bayar/<?php echo $item->bukti_bayar; ?>"
-                                                    target="_blank">Lihat</a> --}}
                                                 <a href="{{ asset('assets/berkas/bukti') . '/' . $item->bukti_bayar }}"
                                                     target="_blank">Lihat</a>
                                             @else

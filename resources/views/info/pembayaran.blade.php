@@ -123,9 +123,7 @@
                 </p>
                 <strong class="text-danger mb-3">Harap untuk melakukan konfirmasi pembayaran dengan klik tombol "Konfirmasi
                     Pembayaran" dibawah
-                    ini.</strong>
-                {{-- <h2 class="text-danger">Mahasiswa Baru wajib mengikuti kegiatan PKKMB pada tanggal 28 Agustus - 2 September
-                    2023</h2> --}}
+                    ini.</strong> <br>
                 <a href="{{ url('pembayaran/konfirmasi') }}" class="btn btn-primary">Konfirmasi Pembayaran</a>
             </div><br>
 

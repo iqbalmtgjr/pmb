@@ -18,16 +18,20 @@ class InfoController extends Controller
 {
     public function index()
     {
+        return view('info.infopmb');
+    }
+    public function infoMhs()
+    {
         $data = Pmbakun::leftJoin('pmb_siswa', 'pmb_akun.pengenal_akun', '=', 'pmb_siswa.akun_siswa')
             ->leftJoin('pmb_prodi', 'pmb_akun.pengenal_akun', '=', 'pmb_prodi.prodi_id_siswa')
             ->where('pmb_akun.pengenal_akun', auth()->user()->pengenal_akun)
             ->first();
         $cekputus = Pmbpenerimaan::where('siswa_penerimaan', auth()->user()->pengenal_akun)->where('umumkan', 1)->first();
-        if ($cekputus == true && $cekputus->status_penerimaan == 1) {
-            return redirect('pembayaran');
-        } else {
-            return view('info.index', compact('data', 'cekputus'));
-        }
+        // if ($cekputus == true && $cekputus->status_penerimaan == 1) {
+        //     return redirect('pembayaran');
+        // } else {
+        return view('info.index', compact('data', 'cekputus'));
+        // }
     }
 
     public function pembayaran()

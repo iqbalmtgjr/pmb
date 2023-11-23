@@ -30,7 +30,8 @@ Route::group(['middleware' => 'guest'], function () {
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 // Informasi
-Route::get('info', [InfoController::class, 'index']);
+Route::get('infoPmb', [InfoController::class, 'index']);
+Route::get('info', [InfoController::class, 'infoMhs']);
 Route::get('pembayaran', [InfoController::class, 'pembayaran']);
 Route::post('postMetodeBayar', [InfoController::class, 'postMetodeBayar']);
 Route::post('uploadBukti', [InfoController::class, 'uploadBukti']);

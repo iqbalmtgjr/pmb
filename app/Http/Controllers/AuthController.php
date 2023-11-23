@@ -136,7 +136,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             toastr()->success('Anda berhasil login!', 'Selamat');
-            return redirect('/info');
+            return redirect('/infoPmb');
         }
 
         toastr()->error('Email atau Password Salah!', 'Gagal');

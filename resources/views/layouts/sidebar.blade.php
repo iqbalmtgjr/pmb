@@ -20,6 +20,12 @@
         Informasi
     </div>
 
+    <li class="nav-item {{ request()->is('infoPmb') ? 'active' : '' }}">
+        <a class="nav-link " href="{{ url('infoPmb') }}">
+            <i class="fas fa-clipboard-check"></i>
+            <span>Informasi PMB</span></a>
+    </li>
+
     <li class="nav-item {{ request()->is('info') ? 'active' : '' }}">
         <a class="nav-link " href="{{ url('info') }}">
             <i class="fas fa-id-card"></i>
