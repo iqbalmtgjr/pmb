@@ -14,7 +14,8 @@
     <!-- Custom fonts for this template-->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
     <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
@@ -59,20 +60,34 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input name="hp_siswa" type="number"
-                                        class="form-control form-control-user @error('hp_siswa') is-invalid @enderror"
-                                        placeholder="Nomor HP Aktif" value="{{ old('hp_siswa') }}">
-                                    @error('hp_siswa')
+                                    <input name="email_akun_siswa" type="email"
+                                        class="form-control form-control-user @error('email_akun_siswa') is-invalid @enderror"
+                                        placeholder="Email" value="{{ old('email_akun_siswa') }}">
+                                    @error('email_akun_siswa')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input name="email_akun_siswa" type="email"
-                                        class="form-control form-control-user @error('email_akun_siswa') is-invalid @enderror"
-                                        placeholder="Email" value="{{ old('email_akun_siswa') }}">
-                                    @error('email_akun_siswa')
+                                    {{-- <input name="hp_siswa" type="number"
+                                        class="form-control form-control-user @error('hp_siswa') is-invalid @enderror"
+                                        placeholder="Nomor HP Aktif" value="{{ old('hp_siswa') }}"> --}}
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">+62</span>
+                                        </div>
+                                        <input type="number"
+                                            class="form-control @error('hp_siswa') is-invalid @enderror" id="inputNOHP"
+                                            name="hp_siswa" placeholder="8xxxxxxxxxx" value="{{ old('hp_siswa') }}">
+                                        @error('hp_siswa')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    @error('hp_siswa')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -128,7 +143,8 @@
                                                 Dini</option>
                                             <option value="8" @selected(old('prodi') == '8')>Pendidikan Bahasa
                                                 Inggris</option>
-                                            <option value="9" @selected(old('prodi') == '9')>Pendidikan Guru Sekolah
+                                            <option value="9" @selected(old('prodi') == '9')>Pendidikan Guru
+                                                Sekolah
                                                 Dasar</option>
                                         </select>
                                         @error('prodi2')
@@ -150,6 +166,17 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-12">
+                                        {!! NoCaptcha::display() !!}
+                                        {!! NoCaptcha::renderJs() !!}
+                                        @error('g-recaptcha-response')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Daftar

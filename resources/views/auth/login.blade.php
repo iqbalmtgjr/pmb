@@ -34,7 +34,8 @@
                 <div class="row mt-3 text-center">
                     <div class="col-12">
                         <img style="width: 100px" src="{{ asset('assets/img/stkip.png') }}" alt="logo-stkip">
-                        <H4 class="mt-3" style="color: white">SELAMAT DATANG DI <br> SISTEM INFORMASI PENDAFTARAN MAHASISWA (SIPEMA)
+                        <H4 class="mt-3" style="color: white">SELAMAT DATANG DI <br> SISTEM INFORMASI PENDAFTARAN
+                            MAHASISWA (SIPEMA)
                         </H4>
                     </div>
                 </div>
@@ -73,28 +74,22 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        {{-- <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                        <div class="form-group row">
+                                            <div class="col-12">
+                                                {!! NoCaptcha::display() !!}
+                                                {!! NoCaptcha::renderJs() !!}
+                                                @error('g-recaptcha-response')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
-                                        </div> --}}
+                                        </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
-                                        {{-- <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a> --}}
                                     </form>
                                     <hr>
-                                    {{-- <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div> --}}
                                     <div class="text-center">
                                         <a class="small" href="{{ url('register') }}">Belum punya akun? Buat Akun
                                             Sekarang!</a>
@@ -120,7 +115,18 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
-
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script type="text/javascript">
+        $('#reload').click(function() {
+            $.ajax({
+                type: 'GET',
+                url: 'reload-captcha',
+                success: function(data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

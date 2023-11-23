@@ -14,34 +14,9 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-
-    // protected $username = 'email_akun_siswa';
-    // protected $password = 'kunci_akun_siswa';
-
-    // public function retrieveByCredentials(array $credentials)
-    // {
-    //     return User::where('email_akun_siswa', $credentials['email_akun_siswa'])->first();
-    // }
-
-    public function validator($data)
+    public function __construct()
     {
-        $validator = Validator::make($data, [
-            'nama_siswa' => ['required', 'string', 'max:255'],
-            'nis_siswa' => ['required', 'integer'],
-            'hp_siswa' => ['required'],
-            'email_akun_siswa' => ['required', 'string', 'email', 'max:255', 'unique:pmb_akun'],
-            'prodi' => ['required'],
-            'prodi2' => ['required'],
-            'jalur' => ['required'],
-        ]);
-
-        if ($validator->fails()) {
-            toastr()->error('Ada Kesalahan Saat Penginputan!', 'Gagal');
-            return redirect()
-                ->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
+        $this->middleware('isTamu')->except('logout');
     }
 
     public function register()
@@ -51,7 +26,6 @@ class AuthController extends Controller
 
     public function registerPost(Request $request)
     {
-        // $this->validator($request->all());
         $validator = Validator::make($request->all(), [
             'nama_siswa' => ['required', 'string', 'max:255'],
             'nis_siswa' => ['required'],
@@ -60,6 +34,7 @@ class AuthController extends Controller
             'prodi' => ['required'],
             'prodi2' => ['required'],
             'jalur' => ['required'],
+            'g-recaptcha-response' => 'required|captcha'
         ]);
 
         if ($validator->fails()) {
@@ -105,7 +80,7 @@ class AuthController extends Controller
         ]);
 
         toastr()->success('Akun berhasil dibuat!', 'Selamat');
-        return redirect('login');
+        return redirect('/');
     }
 
     public function login()
@@ -115,10 +90,10 @@ class AuthController extends Controller
 
     public function loginPost(Request $request)
     {
-        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'email_akun_siswa' => ['required'],
             'kunci_akun_siswa' => ['required'],
+            'g-recaptcha-response' => 'required|captcha'
         ]);
 
         if ($validator->fails()) {
@@ -141,6 +116,11 @@ class AuthController extends Controller
 
         toastr()->error('Email atau Password Salah!', 'Gagal');
         return redirect()->back();
+    }
+
+    public function reloadCaptcha()
+    {
+        return response()->json(['captcha' => captcha_img()]);
     }
 
     public function logout()

@@ -20,53 +20,55 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'guest'], function () {
+Route::group(['middleware' => 'isTamu'], function () {
     Route::get('register', [AuthController::class, 'register']);
     Route::post('register', [AuthController::class, 'registerPost']);
     Route::get('/', [AuthController::class, 'login']);
     Route::post('login', [AuthController::class, 'loginPost']);
+    Route::get('/reload-captcha', [AuthController::class, 'reloadCaptcha'])->name('reload-captcha');
 });
 
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::group(['middleware' => ['isLogin']], function () {
+    // Informasi
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('infoPmb', [InfoController::class, 'index']);
+    Route::get('info', [InfoController::class, 'infoMhs']);
+    Route::get('pembayaran', [InfoController::class, 'pembayaran']);
+    Route::post('postMetodeBayar', [InfoController::class, 'postMetodeBayar']);
+    Route::post('uploadBukti', [InfoController::class, 'uploadBukti']);
+    Route::post('uploadBuktibayar', [InfoController::class, 'uploadBuktibayar']);
+    Route::get('infoTes', [InfoController::class, 'infoTes']);
 
-// Informasi
-Route::get('infoPmb', [InfoController::class, 'index']);
-Route::get('info', [InfoController::class, 'infoMhs']);
-Route::get('pembayaran', [InfoController::class, 'pembayaran']);
-Route::post('postMetodeBayar', [InfoController::class, 'postMetodeBayar']);
-Route::post('uploadBukti', [InfoController::class, 'uploadBukti']);
-Route::post('uploadBuktibayar', [InfoController::class, 'uploadBuktibayar']);
-Route::get('infoTes', [InfoController::class, 'infoTes']);
+    // Konfirmasi Bayar AKhir
+    Route::get('pembayaran/konfirmasi', [InfoController::class, 'konfirmasi']);
+    Route::post('postKonfirmasi', [InfoController::class, 'postKonfirmasi']);
 
-// Konfirmasi Bayar AKhir
-Route::get('pembayaran/konfirmasi', [InfoController::class, 'konfirmasi']);
-Route::post('postKonfirmasi', [InfoController::class, 'postKonfirmasi']);
+    // Data Calon Mahasiswa
+    Route::get('calon', [CalonController::class, 'index']);
+    Route::post('postCalon', [CalonController::class, 'store']);
 
-// Data Calon Mahasiswa
-Route::get('calon', [CalonController::class, 'index']);
-Route::post('postCalon', [CalonController::class, 'store']);
+    // Data Pendidikan Terakhir
+    Route::get('pendidikan', [PendidikanController::class, 'index']);
+    Route::post('postPendidikan', [PendidikanController::class, 'postPendidikan']);
 
-// Data Pendidikan Terakhir
-Route::get('pendidikan', [PendidikanController::class, 'index']);
-Route::post('postPendidikan', [PendidikanController::class, 'postPendidikan']);
+    // Data Info PMB
+    Route::get('info-pmb', [InfopmbController::class, 'index']);
+    Route::post('postInfopmb', [InfopmbController::class, 'store']);
 
-// Data Info PMB
-Route::get('info-pmb', [InfopmbController::class, 'index']);
-Route::post('postInfopmb', [InfopmbController::class, 'store']);
+    // Data Orang Tua Siswa
+    Route::get('ortu', [OrtuController::class, 'index']);
+    Route::post('postOrtu', [OrtuController::class, 'store']);
 
-// Data Orang Tua Siswa
-Route::get('ortu', [OrtuController::class, 'index']);
-Route::post('postOrtu', [OrtuController::class, 'store']);
-
-// Data Upload Berkas
-Route::get('upload', [FileuploadController::class, 'index']);
-Route::post('postBukti', [FileuploadController::class, 'bukti']);
-Route::post('postFoto', [FileuploadController::class, 'foto']);
-Route::post('postAkta', [FileuploadController::class, 'akta']);
-Route::post('postIjazah', [FileuploadController::class, 'ijazah']);
-Route::post('postKk', [FileuploadController::class, 'kk']);
-Route::post('postKtp', [FileuploadController::class, 'ktp']);
-Route::post('postSkck', [FileuploadController::class, 'skck']);
-Route::post('postSkkb', [FileuploadController::class, 'skkb']);
-Route::post('postSkl', [FileuploadController::class, 'skl']);
-Route::post('postPiagam', [FileuploadController::class, 'piagam']);
+    // Data Upload Berkas
+    Route::get('upload', [FileuploadController::class, 'index']);
+    Route::post('postBukti', [FileuploadController::class, 'bukti']);
+    Route::post('postFoto', [FileuploadController::class, 'foto']);
+    Route::post('postAkta', [FileuploadController::class, 'akta']);
+    Route::post('postIjazah', [FileuploadController::class, 'ijazah']);
+    Route::post('postKk', [FileuploadController::class, 'kk']);
+    Route::post('postKtp', [FileuploadController::class, 'ktp']);
+    Route::post('postSkck', [FileuploadController::class, 'skck']);
+    Route::post('postSkkb', [FileuploadController::class, 'skkb']);
+    Route::post('postSkl', [FileuploadController::class, 'skl']);
+    Route::post('postPiagam', [FileuploadController::class, 'piagam']);
+});
