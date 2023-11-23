@@ -64,7 +64,7 @@
                                 <td>SPP Tetap / Semester</td>
                                 <td>{{ rupiah($biaya[2]->prestasi_biaya) }}</td>
                             </tr>
-                        @else
+                        @elseif($cekjalur->jalur == 'test')
                             <tr>
                                 <td>1.</td>
                                 <td>Biaya Registrasi Mahasiswa Baru</td>
@@ -79,6 +79,22 @@
                                 <td>3.</td>
                                 <td>SPP Tetap / Semester</td>
                                 <td>{{ rupiah($biaya[2]->test_biaya) }}</td>
+                            </tr>
+                        @else
+                            <tr>
+                                <td>1.</td>
+                                <td>Biaya Registrasi Mahasiswa Baru</td>
+                                <td>{{ rupiah($biaya[0]->reguler2_biaya) }}</td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>Biaya Pengembangan Kampus</td>
+                                <td>{{ rupiah($biaya[1]->reguler2_biaya) }}</td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td>SPP Tetap / Semester</td>
+                                <td>{{ rupiah($biaya[2]->reguler2_biaya) }}</td>
                             </tr>
                         @endif
                     </tbody>
@@ -105,9 +121,12 @@
                     ATM) ke dalam Akun PMB ini dan melakukan Konfirmasi via WA/SMS ke Nomor 082155964080, konfirmasi
                     pembayaran paling lama dilakukan 2 x 24 jam setelah pembayaran.
                 </p>
+                <strong class="text-danger mb-3">Harap untuk melakukan konfirmasi pembayaran dengan klik tombol "Konfirmasi
+                    Pembayaran" dibawah
+                    ini.</strong>
                 {{-- <h2 class="text-danger">Mahasiswa Baru wajib mengikuti kegiatan PKKMB pada tanggal 28 Agustus - 2 September
                     2023</h2> --}}
-                <p><a href="{{ url('pembayaran/konfirmasi') }}" class="btn btn-primary">Konfirmasi Pembayaran</a></p>
+                <a href="{{ url('pembayaran/konfirmasi') }}" class="btn btn-primary">Konfirmasi Pembayaran</a>
             </div><br>
 
         </div>

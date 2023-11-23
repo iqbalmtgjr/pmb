@@ -34,6 +34,7 @@ Route::get('info', [InfoController::class, 'index']);
 Route::get('pembayaran', [InfoController::class, 'pembayaran']);
 Route::post('postMetodeBayar', [InfoController::class, 'postMetodeBayar']);
 Route::post('uploadBukti', [InfoController::class, 'uploadBukti']);
+Route::post('uploadBuktibayar', [InfoController::class, 'uploadBuktibayar']);
 Route::get('infoTes', [InfoController::class, 'infoTes']);
 
 // Konfirmasi Bayar AKhir

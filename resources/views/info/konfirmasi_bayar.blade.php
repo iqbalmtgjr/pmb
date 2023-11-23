@@ -24,8 +24,8 @@
                         <div class="form-group row">
                             <label for="nama_pengirim" class="col-sm-4 col-form-label">Nama Pengirim</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="nama_pengirim"
-                                    value="{{ old('nama_pengirim') }}" placeholder="Nama Pengirim">
+                                <input type="text" class="form-control @error('nama_pengirim') is-invalid @enderror"
+                                    name="nama_pengirim" value="{{ old('nama_pengirim') }}" placeholder="Nama Pengirim">
                                 @error('nama_pengirim')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -36,8 +36,8 @@
                         <div class="form-group row">
                             <label for="bank_pengirim" class="col-sm-4 col-form-label">Bank Pengirim</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="bank_pengirim"
-                                    value="{{ old('bank_pengirim') }}" placeholder="Bank Pengirim">
+                                <input type="text" class="form-control @error('bank_pengirim') is-invalid @enderror"
+                                    name="bank_pengirim" value="{{ old('bank_pengirim') }}" placeholder="Bank Pengirim">
                                 @error('bank_pengirim')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -48,15 +48,21 @@
                         <div class="form-group row">
                             <label for="tanggal_transaksi" class="col-sm-4 col-form-label">Tanggal Transaksi</label>
                             <div class="col-sm-8">
-                                <input type="date" class="form-control" name="tanggal_transaksi"
-                                    value="{{ old('tanggal_transaksi') }}" placeholder="Contoh : 31/02/2021">
+                                <input type="date" class="form-control @error('tanggal_transaksi') is-invalid @enderror"
+                                    name="tanggal_transaksi" value="{{ old('tanggal_transaksi') }}"
+                                    placeholder="Contoh : 31/02/2021">
+                                @error('tanggal_transaksi')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="jam_transaksi" class="col-sm-4 col-form-label">Jam Transaksi</label>
                             <div class="col-sm-8">
-                                <input type="time" class="form-control" name="jam_transaksi"
-                                    value="{{ old('jam_transaksi') }}" placeholder="Contoh : 07:31:27">
+                                <input type="time" class="form-control @error('jam_transaksi') is-invalid @enderror"
+                                    name="jam_transaksi" value="{{ old('jam_transaksi') }}" placeholder="Contoh : 07:31:27">
                                 @error('jam_transaksi')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -67,9 +73,9 @@
                         <div class="form-group row">
                             <label for="no_referensi" class="col-sm-4 col-form-label">Nomor Referensi</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="no_referensi"
-                                    value="{{ old('no_referensi') }}">
-                                @error('jam_transaksi')
+                                <input type="text" class="form-control @error('no_referensi') is-invalid @enderror"
+                                    name="no_referensi" value="{{ old('no_referensi') }}">
+                                @error('no_referensi')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -79,28 +85,41 @@
                         <div class="form-group row">
                             <label for="jumlah_pembayaran" class="col-sm-4 col-form-label">Jumlah Pembayaran</label>
                             <div class="col-sm-8">
-                                <input type="number" class="form-control" name="jumlah_pembayaran"
-                                    value="{{ old('jumlah_pembayaran') }}" placeholder="Contoh : 6660000">
+                                <input type="text" class="form-control @error('jumlah_pembayaran') is-invalid @enderror"
+                                    name="jumlah_pembayaran" value="{{ old('jumlah_pembayaran') }}"
+                                    placeholder="Contoh : 6660000">
                                 <i class="text-warning">Tanpa titik atau koma</i>
+                                @error('jumlah_pembayaran')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Rincian Pembayaran (<small>Pilih item pembayaran sesuai dengan jumlah uang yang dibayar.
                                     Item
                                     pembayaran dapat dipilih lebih dari satu</small>)</label>
-                            <select class="select2" multiple name="detail_pembayaran[]"
-                                data-placeholder="-- Pilih item pembayaran --" style="width: 100%;">
+                            <select class="select2 @error('detail_pembayaran') is-invalid @enderror" multiple
+                                name="detail_pembayaran[]" data-placeholder="-- Pilih item pembayaran --"
+                                style="width: 100%;">
                                 @for ($i = 0; $i < 3; $i++)
                                     <option value="{{ $biaya[$i]->id_biayakuliahpmb }}">
                                         {{ $biaya[$i]->item_biaya . '(Rp. ' . number_format($biaya[$i]->test_biaya, '2', ',', '.') . ')' }}
                                     </option>
                                 @endfor
                             </select>
+                            @error('detail_pembayaran')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                 </div><!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-info">Simpan</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                    <a href="{{ url('pembayaran') }}" class="btn btn-info"><i class="fas fa-reply"></i> Kembali</a>
                 </div>
                 </form>
             </div><!-- /.card -->
@@ -140,14 +159,12 @@
                                                 {{-- <a href="<?php //echo base_url();
                                                 ?>bayar/<?php echo $item->bukti_bayar; ?>"
                                                     target="_blank">Lihat</a> --}}
-                                                <a href="#" target="_blank">Lihat</a>
+                                                <a href="{{ asset('assets/berkas/bukti') . '/' . $item->bukti_bayar }}"
+                                                    target="_blank">Lihat</a>
                                             @else
                                                 <span class="text-danger">Silahkan Upload Bukti Pembayaran </span><br>
-                                                {{-- <a href="<?php //echo base_url();
-                                                ?>pmb/ungbukti/<?php //echo $item->id_bukti_bayar;
-                                                ?>.html"
-                                                    class="btn btn-sm btn-success">Upload</a> --}}
-                                                <a href="#" class="btn btn-sm btn-success">Upload</a>
+                                                <button type="button" data-toggle="modal" data-target="#bukti"
+                                                    class="btn btn-sm btn-success">Upload</button>
                                             @endif
 
                                         </td>
@@ -178,6 +195,7 @@
         </div>
 
     </div>
+    @include('info.modalupload')
     @push('footer')
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script>
