@@ -118,11 +118,6 @@ class AuthController extends Controller
         return redirect()->back();
     }
 
-    public function reloadCaptcha()
-    {
-        return response()->json(['captcha' => captcha_img()]);
-    }
-
     public function logout()
     {
         Auth::logout();
