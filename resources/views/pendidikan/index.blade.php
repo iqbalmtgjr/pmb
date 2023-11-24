@@ -99,7 +99,7 @@
                     <label for="alamat" class="col-sm-2 col-form-label">Nomor IJAZAH</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control  @error('ijasah_sekolah') is-invalid @enderror"
-                            id="alamat" name="ijasah_sekolah" placeholder="Nomor Ijazah Sekolah"
+                            id="alamat" name="ijasah_sekolah" placeholder="Nomor Ijazah Sekolah (Wajib Diisi)"
                             value="{{ $data == true && $data->ijasah_sekolah != null ? $data->ijasah_sekolah : old('ijasah_sekolah') }}">
                         @error('ijasah_sekolah')
                             <span class="invalid-feedback" role="alert">
@@ -124,7 +124,7 @@
                     <div class="form-group row">
                         <label for="namasekolah" class="col-sm-2 col-form-label">SEMESTER 1<strong
                                 style="color: red">*</strong></label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-5">
                             <input type="text" class="form-control  @error('nilai_satu') is-invalid @enderror"
                                 id="namasekolah" name="nilai_satu" placeholder="Masukkan Nilai Rata-rata"
                                 value="{{ $data == true && $data->nilai_satu != null ? $data->nilai_satu : old('nilai_satu') }}">
@@ -134,11 +134,23 @@
                                 </span>
                             @enderror
                         </div>
+                        <div class="col-sm-5">
+                            <a href="#" data-toggle="modal" data-target="#smt1" class="btn btn-success btn-md"><i
+                                    class="fas fa-upload"></i> Upload</a>
+                            @if (!empty($upload->semes_satu))
+                                <a target="_blank" href="{{ asset('assets/berkas/rapor') . '/' . $upload->semes_satu }}"
+                                    class="btn btn-info btn-md"><i class="fas fa-eye"></i></a>
+                                <a download href="{{ asset('assets/berkas/rapor') . '/' . $upload->semes_satu }}"
+                                    class="btn btn-warning btn-md"><i class="fas fa-file-download"></i></a>
+                            @else
+                                <strong class="text-danger">Belum diupload!</strong>
+                            @endif
+                        </div>
                     </div>
                     <div class="form-group row">
                         <label for="namasekolah" class="col-sm-2 col-form-label">SEMESTER 2<strong
                                 style="color: red">*</strong></label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-5">
                             <input type="text" class="form-control  @error('nilai_dua') is-invalid @enderror"
                                 id="namasekolah" name="nilai_dua" placeholder="Masukkan Nilai Rata-rata"
                                 value="{{ $data == true && $data->nilai_dua != null ? $data->nilai_dua : old('nilai_dua') }}">
@@ -148,11 +160,23 @@
                                 </span>
                             @enderror
                         </div>
+                        <div class="col-sm-5">
+                            <a href="#" data-toggle="modal" data-target="#smt2" class="btn btn-success btn-md"><i
+                                    class="fas fa-upload"></i> Upload</a>
+                            @if (!empty($upload->semes_dua))
+                                <a target="_blank" href="{{ asset('assets/berkas/rapor') . '/' . $upload->semes_dua }}"
+                                    class="btn btn-info btn-md"><i class="fas fa-eye"></i></a>
+                                <a download href="{{ asset('assets/berkas/rapor') . '/' . $upload->semes_dua }}"
+                                    class="btn btn-warning btn-md"><i class="fas fa-file-download"></i></a>
+                            @else
+                                <strong class="text-danger">Belum diupload!</strong>
+                            @endif
+                        </div>
                     </div>
                     <div class="form-group row">
                         <label for="namasekolah" class="col-sm-2 col-form-label">SEMESTER 3<strong
                                 style="color: red">*</strong></label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-5">
                             <input type="text" class="form-control  @error('nilai_tiga') is-invalid @enderror"
                                 id="namasekolah" name="nilai_tiga" placeholder="Masukkan Nilai Rata-rata"
                                 value="{{ $data == true && $data->nilai_tiga != null ? $data->nilai_tiga : old('nilai_tiga') }}">
@@ -162,11 +186,23 @@
                                 </span>
                             @enderror
                         </div>
+                        <div class="col-sm-5">
+                            <a href="#" data-toggle="modal" data-target="#smt3" class="btn btn-success btn-md"><i
+                                    class="fas fa-upload"></i> Upload</a>
+                            @if (!empty($upload->semes_tiga))
+                                <a target="_blank" href="{{ asset('assets/berkas/rapor') . '/' . $upload->semes_tiga }}"
+                                    class="btn btn-info btn-md"><i class="fas fa-eye"></i></a>
+                                <a download href="{{ asset('assets/berkas/rapor') . '/' . $upload->semes_tiga }}"
+                                    class="btn btn-warning btn-md"><i class="fas fa-file-download"></i></a>
+                            @else
+                                <strong class="text-danger">Belum diupload!</strong>
+                            @endif
+                        </div>
                     </div>
                     <div class="form-group row">
                         <label for="namasekolah" class="col-sm-2 col-form-label">SEMESTER 4<strong
                                 style="color: red">*</strong></label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-5">
                             <input type="text" class="form-control  @error('nilai_empat') is-invalid @enderror"
                                 id="namasekolah" name="nilai_empat" placeholder="Masukkan Nilai Rata-rata"
                                 value="{{ $data == true && $data->nilai_empat != null ? $data->nilai_empat : old('nilai_empat') }}">
@@ -176,12 +212,45 @@
                                 </span>
                             @enderror
                         </div>
+                        <div class="col-sm-5">
+                            <a href="#" data-toggle="modal" data-target="#smt4" class="btn btn-success btn-md"><i
+                                    class="fas fa-upload"></i> Upload</a>
+                            @if (!empty($upload->semes_empat))
+                                <a target="_blank" href="{{ asset('assets/berkas/rapor') . '/' . $upload->semes_empat }}"
+                                    class="btn btn-info btn-md"><i class="fas fa-eye"></i></a>
+                                <a download href="{{ asset('assets/berkas/rapor') . '/' . $upload->semes_empat }}"
+                                    class="btn btn-warning btn-md"><i class="fas fa-file-download"></i></a>
+                            @else
+                                <strong class="text-danger">Belum diupload!</strong>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="namasekolah" class="col-sm-2 col-form-label">Piagam</label>
+                        <div class="col-sm-10">
+                            <a href="#" data-toggle="modal" data-target="#piagam"
+                                class="btn btn-success btn-md"><i class="fas fa-upload"></i> Upload</a>
+                            @if (!empty($upload->piagam))
+                                <a target="_blank"
+                                    href="{{ asset('assets/berkas/file_berkas') . '/' . $upload->piagam }}"
+                                    class="btn btn-info btn-md"><i class="fas fa-eye"></i></a>
+                                <a download href="{{ asset('assets/berkas/file_berkas') . '/' . $upload->piagam }}"
+                                    class="btn btn-warning btn-md"><i class="fas fa-file-download"></i></a>
+                            @else
+                                <strong class="text-danger">Belum diupload!</strong>
+                            @endif
+                        </div>
                     </div>
             </div>
         </div>
     @endif
     <button type="submit" class="btn btn-primary btn-md float-right mt-3 mb-3">Simpan dan Lanjutkan</button>
     </form>
+    @include('pendidikan.uploadsmt1')
+    @include('pendidikan.uploadsmt2')
+    @include('pendidikan.uploadsmt3')
+    @include('pendidikan.uploadsmt4')
+    @include('upload.piagam')
     @push('footer')
         <script>
             $(function() {

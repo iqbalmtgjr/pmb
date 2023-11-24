@@ -89,7 +89,7 @@ class InfoController extends Controller
             $request->file('foto')->move(public_path('assets/berkas/bukti/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
-                'foto_upload' => $nama_file
+                'pembayaran_upload' => $nama_file
             ]);
 
             toastr()->success('Bukti berhasil diupload!', 'Selamat');

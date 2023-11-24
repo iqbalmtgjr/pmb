@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
 use App\Models\User;
+use App\Mail\SendAkun;
 use App\Models\Pmbakun;
 use App\Models\Pmbprodi;
 use App\Models\Pmbsiswa;
@@ -79,7 +81,14 @@ class AuthController extends Controller
             'daftar_akun' => now()->timestamp,
         ]);
 
-        toastr()->success('Akun berhasil dibuat!', 'Selamat');
+        $akun = Pmbakun::leftJoin('pmb_siswa', 'pmb_akun.pengenal_akun', '=', 'pmb_siswa.akun_siswa')
+            ->leftJoin('pmb_prodi', 'pmb_akun.pengenal_akun', '=', 'pmb_prodi.prodi_id_siswa')
+            ->where('pmb_akun.pengenal_akun', $rand_akun)
+            ->first();
+
+        Mail::to($request->email_akun_siswa)->send(new SendAkun($akun));
+
+        toastr()->success('Akun berhasil dibuat! Cek email anda untuk melihat password yang digunakan.', 'Selamat');
         return redirect('/');
     }
 

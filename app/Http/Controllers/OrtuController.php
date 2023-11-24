@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pmbortu;
+use App\Models\Pmbsiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,6 +12,11 @@ class OrtuController extends Controller
     public function index()
     {
         $data = Pmbortu::where('ortu_pengenal_siswa', auth()->user()->pengenal_akun)->first();
+        $cekvalid = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
+        if ($cekvalid->valid_bayar != 2) {
+            toastr()->warning('Anda belum tervalidasi', 'Peringatan');
+            return redirect()->back();
+        }
         return view('ortu.index', compact('data'));
     }
 

@@ -11,7 +11,7 @@
                 <form action="{{ url('postKk') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="file" class="form-control @error('kk') is-invalid @enderror" name="kk">
-                    <p class="text-warning">(Format file : .pdf, Besar file maksimal 5MB)</p>
+                    <p class="text-warning">(Format file : .jpg|png|pdf, Besar file maksimal 5MB)</p>
                     @error('kk')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

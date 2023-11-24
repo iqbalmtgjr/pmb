@@ -236,9 +236,9 @@
                                                 Sekarang</button> --}}
                                             </form>
                                             @if ($cekbukti == true)
-                                                <img src="{{ asset('assets/img/bukti') . '/' . $cekbukti->pembayaran_upload }}"
+                                                <img src="{{ asset('assets/berkas/bukti') . '/' . $cekbukti->pembayaran_upload }}"
                                                     alt="Bukti Bayar" style="max-width: 300px;"><br>
-                                                <a href="{{ asset('assets/img/bukti') . '/' . $cekbukti->pembayaran_upload }}"
+                                                <a href="{{ asset('assets/berkas/bukti') . '/' . $cekbukti->pembayaran_upload }}"
                                                     target="_blank" class="btn btn-success btn-md mt-2">Lihat Bukti</a>
                                             @endif
                                         </div>

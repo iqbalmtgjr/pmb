@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CalonController;
-use App\Http\Controllers\FileuploadController;
-use App\Http\Controllers\InfoController;
-use App\Http\Controllers\InfopmbController;
-use App\Http\Controllers\OrtuController;
-use App\Http\Controllers\PendidikanController;
+use App\Mail\SendAkun;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InfoController;
+use App\Http\Controllers\OrtuController;
+use App\Http\Controllers\CalonController;
+use App\Http\Controllers\InfopmbController;
+use App\Http\Controllers\FileuploadController;
+use App\Http\Controllers\PendidikanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,12 @@ Route::group(['middleware' => 'isTamu'], function () {
     Route::get('/', [AuthController::class, 'login']);
     Route::post('login', [AuthController::class, 'loginPost']);
     Route::get('/reload-captcha', [AuthController::class, 'reloadCaptcha'])->name('reload-captcha');
+    Route::get('send-email', function () {
+        $email = new SendAkun();
+        Mail::to('iqbalmtgjr@gmail.com')->send($email);
+
+        return 'Berhasil!';
+    });
 });
 
 Route::group(['middleware' => ['isLogin']], function () {
@@ -50,6 +58,10 @@ Route::group(['middleware' => ['isLogin']], function () {
     // Data Pendidikan Terakhir
     Route::get('pendidikan', [PendidikanController::class, 'index']);
     Route::post('postPendidikan', [PendidikanController::class, 'postPendidikan']);
+    Route::post('postSmt1', [PendidikanController::class, 'postSmt1']);
+    Route::post('postSmt2', [PendidikanController::class, 'postSmt2']);
+    Route::post('postSmt3', [PendidikanController::class, 'postSmt3']);
+    Route::post('postSmt4', [PendidikanController::class, 'postSmt4']);
 
     // Data Info PMB
     Route::get('info-pmb', [InfopmbController::class, 'index']);

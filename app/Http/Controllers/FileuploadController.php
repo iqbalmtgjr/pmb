@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pmbprodi;
+use App\Models\Pmbsiswa;
 use App\Models\Pmbupload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -13,6 +14,11 @@ class FileuploadController extends Controller
     {
         $jalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
         $gam = Pmbupload::where('upload_id_siswa', auth()->user()->pengenal_akun)->first();
+        $cekvalid = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
+        if ($cekvalid->valid_bayar != 2) {
+            toastr()->warning('Anda belum tervalidasi', 'Peringatan');
+            return redirect()->back();
+        }
         return view('upload.index', compact('jalur', 'gam'));
     }
 
@@ -109,7 +115,7 @@ class FileuploadController extends Controller
     public function ijazah(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'ijazah' => 'required|mimes:pdf|max:5120',
+            'ijazah' => 'required|mimes:jpg,png,pdf|max:5120',
         ]);
 
         if ($validator->fails()) {
@@ -154,7 +160,7 @@ class FileuploadController extends Controller
     public function skck(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'skck' => 'required|mimes:pdf|max:5120',
+            'skck' => 'required|mimes:jpg,png,pdf|max:5120',
         ]);
 
         if ($validator->fails()) {
@@ -199,7 +205,7 @@ class FileuploadController extends Controller
     public function kk(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'kk' => 'required|mimes:pdf|max:5120',
+            'kk' => 'required|mimes:jpg,png,pdf|max:5120',
         ]);
 
         if ($validator->fails()) {
@@ -244,7 +250,7 @@ class FileuploadController extends Controller
     public function akta(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'akta_lahir' => 'required|mimes:pdf|max:5120',
+            'akta_lahir' => 'required|mimes:jpg,png,pdf|max:5120',
         ]);
 
         if ($validator->fails()) {
@@ -289,7 +295,7 @@ class FileuploadController extends Controller
     public function ktp(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'ktp' => 'required|mimes:pdf|max:5120',
+            'ktp' => 'required|mimes:jpg,png,pdf|max:5120',
         ]);
 
         if ($validator->fails()) {
@@ -334,7 +340,7 @@ class FileuploadController extends Controller
     public function skkb(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'skkb' => 'required|mimes:pdf|max:5120',
+            'skkb' => 'required|mimes:jpg,png,pdf|max:5120',
         ]);
 
         if ($validator->fails()) {
@@ -379,7 +385,7 @@ class FileuploadController extends Controller
     public function skl(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'skl' => 'required|mimes:pdf|max:5120',
+            'skl' => 'required|mimes:jpg,png,pdf|max:5120',
         ]);
 
         if ($validator->fails()) {
@@ -424,7 +430,7 @@ class FileuploadController extends Controller
     public function piagam(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'piagam' => 'required|mimes:pdf|max:5120',
+            'piagam' => 'required|mimes:jpg,png,pdf|max:5120',
         ]);
 
         if ($validator->fails()) {

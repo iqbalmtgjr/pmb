@@ -16,6 +16,10 @@ class CalonController extends Controller
     {
         // dd(Auth::user());
         $data = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
+        if ($data->valid_bayar != 2) {
+            toastr()->warning('Anda belum tervalidasi', 'Peringatan');
+            return redirect()->back();
+        }
         return view('calon.index', compact('data'));
     }
 
