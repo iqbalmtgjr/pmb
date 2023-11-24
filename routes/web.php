@@ -28,12 +28,6 @@ Route::group(['middleware' => 'isTamu'], function () {
     Route::get('/', [AuthController::class, 'login']);
     Route::post('login', [AuthController::class, 'loginPost']);
     Route::get('/reload-captcha', [AuthController::class, 'reloadCaptcha'])->name('reload-captcha');
-    Route::get('send-email', function () {
-        $email = new SendAkun();
-        Mail::to('iqbalmtgjr@gmail.com')->send($email);
-
-        return 'Berhasil!';
-    });
 });
 
 Route::group(['middleware' => ['isLogin']], function () {
