@@ -28,7 +28,7 @@ class SendAkun extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('persada@persadakhatulistiwa.ac.id', 'SIPEMA'),
+            from: new Address('admin@sipema.stkippersada.ac.id', 'SIPEMA'),
             subject: 'Panitia PMB STKIP Persada Khatulistiwa Sintang',
         );
     }

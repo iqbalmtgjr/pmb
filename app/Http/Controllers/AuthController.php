@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Mail;
 use App\Models\User;
 use App\Mail\SendAkun;
 use App\Models\Pmbakun;
@@ -86,7 +85,7 @@ class AuthController extends Controller
             ->where('pmb_akun.pengenal_akun', $rand_akun)
             ->first();
 
-        Mail::to($request->email_akun_siswa)->send(new SendAkun($akun));
+        \Mail::to($request->email_akun_siswa)->send(new SendAkun($akun));
 
         toastr()->success('Akun berhasil dibuat! Cek email anda untuk melihat password yang digunakan.', 'Selamat');
         return redirect('/');

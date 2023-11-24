@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 15, 2023 at 05:07 PM
+-- Generation Time: Nov 24, 2023 at 07:21 AM
 -- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -61,13 +61,13 @@ CREATE TABLE `bukti_bayar` (
   `jam_trans` varchar(20) NOT NULL,
   `nomor_refe` varchar(225) NOT NULL,
   `jlh_bayar` int NOT NULL,
-  `bukti_bayar` varchar(225) NOT NULL,
+  `bukti_bayar` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `validasi_bukti` int NOT NULL,
-  `tgl_validbukti` varchar(50) NOT NULL,
-  `yg_validasi` varchar(10) NOT NULL,
-  `konfirm_bauk` int NOT NULL,
-  `yg_validasibauk` varchar(50) NOT NULL,
-  `tgl_konfirmbauk` varchar(50) NOT NULL
+  `tgl_validbukti` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `yg_validasi` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `konfirm_bauk` int DEFAULT NULL,
+  `yg_validasibauk` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `tgl_konfirmbauk` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -95,27 +95,10 @@ INSERT INTO `captcha` (`captcha_id`, `captcha_time`, `ip_address`, `word`, `file
 (258640, 1700013850, '153.92.9.20', '5595', '1700013850.4576.jpg'),
 (258639, 1700013849, '153.92.9.20', '1351', '1700013848.8756.jpg'),
 (258638, 1700013849, '153.92.9.20', '6376', '1700013848.5907.jpg'),
-(258637, 1700013846, '153.92.9.20', '8555', '1700013845.7952.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `migrations`
---
-
-CREATE TABLE `migrations` (
-  `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+(258637, 1700013846, '153.92.9.20', '8555', '1700013845.7952.jpg'),
+(258642, 1700021264, '::1', '5812', '1700021264.416.jpg'),
+(258643, 1700021347, '::1', '8941', '1700021347.2821.jpg'),
+(258644, 1700022104, '::1', '3984', '1700022104.3355.jpg');
 
 -- --------------------------------------------------------
 
@@ -129,7 +112,7 @@ CREATE TABLE `pembayaran_rinci` (
   `tanggal_rinci` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `akun_pembayaran` varchar(225) NOT NULL,
   `jenis_bayar_rinci` int NOT NULL,
-  `user_id_rinci` varchar(225) NOT NULL,
+  `user_id_rinci` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `jumlah_rinci` int NOT NULL,
   `semester_rinci` int NOT NULL,
   `smt_nama` varchar(20) NOT NULL,
@@ -193,25 +176,6 @@ INSERT INTO `pengguna` (`pengguna_id`, `unit_pengguna`, `email`, `nama`, `passwo
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personal_access_tokens`
---
-
-CREATE TABLE `personal_access_tokens` (
-  `id` bigint UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
-  `last_used_at` timestamp NULL DEFAULT NULL,
-  `expires_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `pkkmb`
 --
 
@@ -236,8 +200,8 @@ CREATE TABLE `pkkmb` (
 CREATE TABLE `pmb_akun` (
   `id_akun_siswa` int NOT NULL,
   `pengenal_akun` varchar(100) NOT NULL,
-  `email_akun_siswa` varchar(70) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `kunci_akun_siswa` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `email_akun_siswa` varchar(70) NOT NULL,
+  `kunci_akun_siswa` text NOT NULL,
   `status_akun` int NOT NULL,
   `last_login_siswa` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `alamat_ip_daftar` varchar(45) NOT NULL,
@@ -247,13 +211,6 @@ CREATE TABLE `pmb_akun` (
   `ujian` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `kuncigudang` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pmb_akun`
---
-
-INSERT INTO `pmb_akun` (`id_akun_siswa`, `pengenal_akun`, `email_akun_siswa`, `kunci_akun_siswa`, `status_akun`, `last_login_siswa`, `alamat_ip_daftar`, `alamat_ip_login`, `daftar_akun`, `gelombang`, `ujian`, `kuncigudang`) VALUES
-(1, 'ivtoRYOnHU1lR2Hcj6Y5', 'iqbalmtgjr@gmail.com', '$2y$12$6.IbYunrnA1L6FerDbiHRu.FpQySE0FzSp12zm9x2fz8reYXF3Le.', 0, NULL, '127.0.0.1', NULL, 1700058200, 1, NULL, '916466');
 
 -- --------------------------------------------------------
 
@@ -311,9 +268,9 @@ CREATE TABLE `pmb_ortu` (
   `tgl_lahir_ayah` varchar(20) NOT NULL,
   `alamat_ayah` varchar(225) NOT NULL,
   `pekerjaan_ayah` varchar(50) NOT NULL,
-  `pendidikan_ayah` varchar(11) NOT NULL,
+  `pendidikan_ayah` varchar(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `hp_ayah` varchar(20) NOT NULL,
-  `npwp_ayah` varchar(50) NOT NULL,
+  `npwp_ayah` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `penghasilan_ayah` varchar(50) NOT NULL,
   `nik_ibu` varchar(50) NOT NULL,
   `nama_ibu` varchar(50) NOT NULL,
@@ -321,9 +278,9 @@ CREATE TABLE `pmb_ortu` (
   `tgl_lahir_ibu` varchar(20) NOT NULL,
   `alamat_ibu` varchar(225) NOT NULL,
   `pekerjaan_ibu` varchar(50) NOT NULL,
-  `pendidikan_ibu` varchar(11) NOT NULL,
+  `pendidikan_ibu` varchar(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `hp_ibu` varchar(20) NOT NULL,
-  `npwp_ibu` varchar(50) NOT NULL,
+  `npwp_ibu` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `penghasilan_ibu` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -357,13 +314,6 @@ CREATE TABLE `pmb_prodi` (
   `jalur` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `pmb_prodi`
---
-
-INSERT INTO `pmb_prodi` (`id_prodi_pmb`, `prodi_id_siswa`, `pilihan_satu`, `pilihan_dua`, `pembayaran`, `jalur`) VALUES
-(4, 'ivtoRYOnHU1lR2Hcj6Y5', 2, 4, NULL, 'test');
-
 -- --------------------------------------------------------
 
 --
@@ -378,13 +328,12 @@ CREATE TABLE `pmb_sekolah` (
   `alamat_sekolah` varchar(225) NOT NULL,
   `jurusan_sekolah` varchar(20) NOT NULL,
   `tahun_lulus_sekolah` int NOT NULL,
-  `skhun_sekolah` varchar(100) NOT NULL,
-  `ijasah_sekolah` varchar(100) NOT NULL,
-  `nilai_satu` varchar(10) NOT NULL,
-  `nilai_dua` varchar(10) NOT NULL,
-  `nilai_tiga` varchar(10) NOT NULL,
-  `nilai_empat` varchar(10) NOT NULL,
-  `nilai_lima` varchar(10) NOT NULL
+  `ijasah_sekolah` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `nilai_satu` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `nilai_dua` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `nilai_tiga` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `nilai_empat` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `nilai_lima` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -400,7 +349,7 @@ CREATE TABLE `pmb_siswa` (
   `valid_bayar` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `ref` bigint NOT NULL,
   `nik_siswa` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `nis_siswa` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `nis_siswa` varchar(30) NOT NULL,
   `nama_siswa` varchar(100) NOT NULL,
   `tmp_lahir_siswa` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `tgl_lahir_siswa` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
@@ -417,13 +366,6 @@ CREATE TABLE `pmb_siswa` (
   `transpot_siswa` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `kps_siswa` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pmb_siswa`
---
-
-INSERT INTO `pmb_siswa` (`id_siswa`, `akun_siswa`, `metode_bayar`, `valid_bayar`, `ref`, `nik_siswa`, `nis_siswa`, `nama_siswa`, `tmp_lahir_siswa`, `tgl_lahir_siswa`, `jekel_siswa`, `agama_siswa`, `alamat_siswa`, `dusun_siswa`, `rtrw_siswa`, `desa_siswa`, `kec_siswa`, `pos_siswa`, `hp_siswa`, `jenis_tiggal_siswa`, `transpot_siswa`, `kps_siswa`) VALUES
-(4, 'ivtoRYOnHU1lR2Hcj6Y5', NULL, NULL, 311107, NULL, '123123', 'Muhammad Iqbal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '08996979079', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -470,22 +412,21 @@ CREATE TABLE `pmb_transaksi` (
 CREATE TABLE `pmb_upload` (
   `id_upload` int NOT NULL,
   `upload_id_siswa` varchar(100) NOT NULL,
-  `foto_upload` varchar(225) NOT NULL,
-  `ijasah_upload` varchar(225) NOT NULL,
-  `skhu_upload` varchar(225) NOT NULL,
-  `skkb_upload` varchar(225) NOT NULL,
-  `skck_upload` varchar(250) NOT NULL,
-  `kk_upload` varchar(225) NOT NULL,
-  `akta_lahir_upload` varchar(225) NOT NULL,
-  `ktp_upload` varchar(225) NOT NULL,
-  `ket_lulus_upload` varchar(225) NOT NULL,
-  `pembayaran_upload` varchar(225) NOT NULL,
-  `semes_satu` varchar(225) NOT NULL,
-  `semes_dua` varchar(225) NOT NULL,
-  `semes_tiga` varchar(225) NOT NULL,
-  `semes_empat` varchar(225) NOT NULL,
-  `semes_lima` varchar(225) NOT NULL,
-  `piagam` varchar(225) NOT NULL
+  `foto_upload` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `ijasah_upload` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `skhu_upload` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `skkb_upload` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `skck_upload` varchar(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `kk_upload` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `akta_lahir_upload` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `ktp_upload` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `ket_lulus_upload` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `pembayaran_upload` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `semes_satu` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `semes_dua` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `semes_tiga` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `semes_empat` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `piagam` varchar(225) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -620,30 +561,6 @@ INSERT INTO `unit` (`id_unit`, `unit`, `singkatan`, `ruangan`) VALUES
 (43, 'Pengurus dan Pengawas PBPKB', 'PBPKB', 'Gedung A2'),
 (44, 'Ketua STKIP Persada Khatulistiwa', 'KET', 'Gedung A');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Muhammad Iqbal', 'iqbalmtgjr@gmail.com', NULL, '$2y$12$6.IbYunrnA1L6FerDbiHRu.FpQySE0FzSp12zm9x2fz8reYXF3Le.', NULL, NULL, NULL);
-
 --
 -- Indexes for dumped tables
 --
@@ -668,12 +585,6 @@ ALTER TABLE `captcha`
   ADD KEY `word` (`word`);
 
 --
--- Indexes for table `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `pembayaran_rinci`
 --
 ALTER TABLE `pembayaran_rinci`
@@ -691,14 +602,6 @@ ALTER TABLE `penerimaan`
 ALTER TABLE `pengguna`
   ADD PRIMARY KEY (`pengguna_id`),
   ADD KEY `email` (`email`);
-
---
--- Indexes for table `personal_access_tokens`
---
-ALTER TABLE `personal_access_tokens`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
-  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
 -- Indexes for table `pkkmb`
@@ -804,13 +707,6 @@ ALTER TABLE `unit`
   ADD PRIMARY KEY (`id_unit`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -830,13 +726,7 @@ ALTER TABLE `bukti_bayar`
 -- AUTO_INCREMENT for table `captcha`
 --
 ALTER TABLE `captcha`
-  MODIFY `captcha_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258642;
-
---
--- AUTO_INCREMENT for table `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `captcha_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258645;
 
 --
 -- AUTO_INCREMENT for table `pembayaran_rinci`
@@ -857,12 +747,6 @@ ALTER TABLE `pengguna`
   MODIFY `pengguna_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
--- AUTO_INCREMENT for table `personal_access_tokens`
---
-ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `pkkmb`
 --
 ALTER TABLE `pkkmb`
@@ -872,7 +756,7 @@ ALTER TABLE `pkkmb`
 -- AUTO_INCREMENT for table `pmb_akun`
 --
 ALTER TABLE `pmb_akun`
-  MODIFY `id_akun_siswa` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_akun_siswa` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pmb_info`
@@ -896,13 +780,13 @@ ALTER TABLE `pmb_ortu`
 -- AUTO_INCREMENT for table `pmb_penerimaan`
 --
 ALTER TABLE `pmb_penerimaan`
-  MODIFY `id_penerimaan` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penerimaan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pmb_prodi`
 --
 ALTER TABLE `pmb_prodi`
-  MODIFY `id_prodi_pmb` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_prodi_pmb` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pmb_sekolah`
@@ -914,7 +798,7 @@ ALTER TABLE `pmb_sekolah`
 -- AUTO_INCREMENT for table `pmb_siswa`
 --
 ALTER TABLE `pmb_siswa`
-  MODIFY `id_siswa` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_siswa` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pmb_sms`
@@ -957,12 +841,6 @@ ALTER TABLE `prodlulus`
 --
 ALTER TABLE `unit`
   MODIFY `id_unit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
