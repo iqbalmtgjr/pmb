@@ -27,7 +27,6 @@ Route::group(['middleware' => 'isTamu'], function () {
     Route::post('register', [AuthController::class, 'registerPost']);
     Route::get('/', [AuthController::class, 'login']);
     Route::post('login', [AuthController::class, 'loginPost']);
-    Route::get('/reload-captcha', [AuthController::class, 'reloadCaptcha'])->name('reload-captcha');
 });
 
 Route::group(['middleware' => ['isLogin']], function () {
