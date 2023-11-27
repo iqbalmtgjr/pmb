@@ -117,7 +117,13 @@ class AuthController extends Controller
             'kunci_akun_siswa' => $request->kunci_akun_siswa,
         ];
 
+
         if (Auth::attempt($credentials)) {
+            $data = Pmbakun::where('pengenal_akun', auth()->user()->pengenal_akun)->first();
+            $data->update([
+                'last_login_siswa' => now()->timestamp,
+                'alamat_ip_login' => $request->ip(),
+            ]);
             toastr()->success('Anda berhasil login!', 'Selamat');
             return redirect('/infoPmb');
         }

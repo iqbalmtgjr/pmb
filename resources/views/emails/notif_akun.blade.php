@@ -6,9 +6,12 @@
 </head>
 
 <body>
-    <h2>SIPEMA</h2>
+    <center>
+        <h2>SIPEMA</h2>
+    </center>
 
-    <h3>Terima kasih telah mendaftar sebagai mahasiswa baru di STKIP Persada Khatulistiwa Sintang.</h3>
+    <h3>Hai {{ $akun->nama_siswa }}, terima kasih telah mendaftar sebagai mahasiswa baru di STKIP Persada Khatulistiwa
+        Sintang.</h3>
     <p>
         Dibawah ini merupakan informasi pendaftaran sekaligus password yang digunakan untuk login ke website Sistem
         Informasi Pendaftaran Mahasiswa (SIPEMA).
@@ -23,7 +26,13 @@
         <tbody>
             <tr>
                 <td>Jalur</td>
-                <td>: {{ $akun->jalur }}</td>
+                @if ($akun->jalur == 'test')
+                    <td>: Tes</td>
+                @elseif($akun->jalur == 'prestasi')
+                    <td>: Prestasi</td>
+                @else
+                    <td>: Reguler 2</td>
+                @endif
             </tr>
             <tr>
                 <td>Gelombang</td>

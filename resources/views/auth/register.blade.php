@@ -159,7 +159,7 @@
                                         <option value=" ">-- Jalur Penerimaan --</option>
                                         <option value="test" @selected(old('jalur') == 'test')>Tes</option>
                                         <option value="prestasi" @selected(old('jalur') == 'prestasi')>Prestasi</option>
-                                        <option value="reguler2" @selected(old('jalur') == 'prestasi')>Reguler 2</option>
+                                        <option value="reguler2" @selected(old('jalur') == 'reguler2')>Reguler 2</option>
                                     </select>
                                     @error('jalur')
                                         <span class="invalid-feedback" role="alert">
