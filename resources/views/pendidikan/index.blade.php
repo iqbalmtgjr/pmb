@@ -117,7 +117,8 @@
                 <h6 class="text-primary">Nilai Rapor</h6>
             </div>
             <div class="card-body">
-                <p class="text-info">Silahkan masukkan nilai rapor per semester yang ditentukan ke form input yang sudah
+                <p class="text-info">Silahkan masukkan nilai rapor dan upload foto nilai rapor per semester yang ditentukan
+                    ke form input yang sudah
                     disediakan.</p>
                 <form action="{{ url('postPendidikan') }}" method="post">
                     @csrf
