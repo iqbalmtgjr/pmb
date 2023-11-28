@@ -168,19 +168,31 @@
                         </form>
                     @elseif ($data->metode_bayar == 2)
                         @if ($data->valid_bayar == null)
-                            <p>Silahkan Melakukan Pembayaran melalui Teller Bank ke Nomor Rekening 4010006517 (BANK KALBAR)
+                            <p>Silahkan Melakukan Pembayaran sebesar
+                                @if ($cekjalur->jalur == 'prestasi')
+                                    <strong>Rp. {{ rupiah($biaya[4]->prestasi_biaya) }}</strong>
+                                @elseif($cekjalur->jalur == 'prestasi')
+                                    <strong>{{ rupiah($biaya[4]->test_biaya) }}</strong>
+                                @else
+                                    <strong>{{ rupiah($biaya[4]->reguler2_biaya) }}</strong>
+                                @endif melalui Teller Bank ke Nomor Rekening
+                                <strong>4010006517</strong> (BANK KALBAR)
                                 Atas
                                 Nama
                                 PRKMPULN BDN PEND KARYA BANGSA. Masukan Berita pada keterangan transfer bank anda sesuai
                                 dengan
                                 nomor
-                                pendaftaran yaitu : 19656. Setelah Melakukan Pembayaran Upload Bukti Transaksi (Slip Bank /
+                                pendaftaran yaitu : <strong>{{ $data->ref }}</strong>. Setelah Melakukan Pembayaran
+                                Upload Bukti
+                                Transaksi (Slip Bank /
                                 Struk
                                 ATM)
-                                ke Akun PMB dan melakukan Konfirmasi via WA/SMS ke Nomor 082155964080, konfirmasi pembayaran
+                                ke Akun PMB dan melakukan Konfirmasi via WA/SMS ke Nomor <strong>082155964080</strong>,
+                                konfirmasi pembayaran
                                 paling
                                 lama
-                                dilakukan 2 x 24 jam.</p>
+                                dilakukan 2 x 24 jam.
+                            </p>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="card bg-success">

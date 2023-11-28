@@ -75,15 +75,15 @@
                                             @enderror
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-12">
-                                                {!! NoCaptcha::display() !!}
-                                                {!! NoCaptcha::renderJs() !!}
-                                                @error('g-recaptcha-response')
-                                                    <span class="text-danger" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
+                                            {{-- <div class="col-12"> --}}
+                                            {!! NoCaptcha::display() !!}
+                                            {!! NoCaptcha::renderJs() !!}
+                                            @error('g-recaptcha-response')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            {{-- </div> --}}
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login

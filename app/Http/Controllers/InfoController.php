@@ -18,7 +18,10 @@ class InfoController extends Controller
 {
     public function index()
     {
-        return view('info.infopmb');
+        $biaya = Biayakuliahpmb::all();
+        $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
+        $jadwal = Pmbjadwal::all();
+        return view('info.infopmb', compact('biaya', 'cekjalur'));
     }
     public function infoMhs()
     {

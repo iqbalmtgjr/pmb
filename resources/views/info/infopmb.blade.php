@@ -1,109 +1,301 @@
 @extends('layouts.master')
-@push('header')
-    <style>
-        .nav-link {
-            cursor: pointer;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content:target {
-            display: block;
-        }
-
-        .nav-link:target {
-            font-weight: bold;
-            color: #007bff;
-        }
-    </style>
-@endpush
 @section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Informasi Pendaftaran dan Informasi Pembayaran PMB</h1>
+        <h1 class="h3 mb-0 text-gray-800">Informasi Pendaftaran, Persyaratan dan Pembayaran PMB</h1>
         <a download href="{{ asset('assets/img/brosur.jpg') }}"
             class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Download
             Brosur</a>
     </div>
     <div class="card">
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Informasi Pendaftaran PMB</h6>
+        <div class="card-header text-white text-center">
+            <ul class="nav nav-pills card-header-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="pill" href="#tabprestasi">Jalur Prestasi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#tabtes">Jalur Tes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#tabreg2">Jalur Reguler 2</a>
+                </li>
+            </ul>
         </div>
         <div class="card-body">
-            <div class="card">
-                <div class="card-header text-white text-center">
-                    <ul class="nav nav-pills card-header-pills">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#tabprestasi">Jalur Prestasi</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#tabtes">Jalur Tes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#tabreg2">Jalur Reguler 2</a>
-                        </li>
-                    </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active mb-5" id="tabprestasi">
+                    <h3 class="card-title text-center text-primary"><strong>Jalur Prestasi</strong></h3>
+                    <div>
+                        <h5><strong>Jadwal</strong></h5>
+                        <div>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Pendaftaran Jalur Prestasi Gelombang I</td>
+                                        <td></td>
+                                        <td>: 1 Desember 2023 - 30 Maret 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pengumuman Penerimaan Jalur Prestasi Gelombang I</td>
+                                        <td></td>
+                                        <td>: 4 April 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Registrasi Jalur Prestasi Gelombang I</td>
+                                        <td></td>
+                                        <td>: 11 - 25 April 2024</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-5">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Pendaftaran Jalur Prestasi Gelombang II</td>
+                                        <td></td>
+                                        <td>: 1 April - 29 Juni 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pengumuman I Penerimaan Jalur Prestasi Gelombang II</td>
+                                        <td></td>
+                                        <td>: 15 Mei 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pengumuman II Penerimaan Jalur Prestasi Gelombang II</td>
+                                        <td></td>
+                                        <td>: 11 Juli 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Registrasi Jalur Prestasi Gelombang II</td>
+                                        <td></td>
+                                        <td>: 12 - 26 Juli 2024</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-5">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Pendaftaran Jalur Prestasi Gelombang III</td>
+                                        <td></td>
+                                        <td>: 1 Juli - 24 Agustus 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pengumuman I Penerimaan Jalur Prestasi Gelombang III</td>
+                                        <td></td>
+                                        <td>: 31 Juli 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pengumuman II Penerimaan Jalur Prestasi Gelombang III</td>
+                                        <td></td>
+                                        <td>: 30 Agustus 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Registrasi Jalur Prestasi Gelombang III</td>
+                                        <td></td>
+                                        <td>: 31 Agustus - 7 September 2024</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <h5><strong>Persyaratan</strong></h5>
+                        <ol>
+                            <li>Foto 4 x 6</li>
+                            <li>Ijazah</li>
+                            <li>Kartu Tanda Penduduk (KTP)</li>
+                            <li>Surat Keterangan Lulus (Ijazah Belum Terbit)</li>
+                            <li>Surat Keterangan Kelakuan Baik/SKKB (Dikeluarkan Pihak Sekolah)</li>
+                            <li>Kartu Keluarga</li>
+                            <li>Akta Kelahiran</li>
+                            <li>Nilai Rapor Semester I-V (Prestasi Akademik)</li>
+                            <li>Sertifikat/Piagam (Prestasi Non Akademik)</li>
+                        </ol>
+                    </div>
+                    <div class="mt-5">
+                        <h5><strong>Pembayaran</strong></h5>
+                        <ul>
+                            <li>Biaya Registrasi <strong>Rp. {{ rupiah($biaya[0]->prestasi_biaya) }}</strong></li>
+                            <li>Biaya Pengembangan Kampus <strong>Rp.
+                                    {{ rupiah($biaya[1]->prestasi_biaya) }}</strong></li>
+                            <li>Biaya Kuliah (SPP Tetap <strong>Rp.
+                                    {{ rupiah($biaya[2]->prestasi_biaya) }}</strong>/Semester dan SKS <strong>Rp.
+                                    {{ rupiah($biaya[3]->prestasi_biaya) }}</strong>/SKS)</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div class="" id="before">
-                        <h3 class="card-title text-center">Pilih Jalur diatas dulu!</h3>
+                <div class="tab-pane fade mb-5" id="tabtes">
+                    <h3 class="card-title text-center text-primary"><strong>Jalur Tes</strong></h3>
+                    <div>
+                        <h5><strong>Jadwal</strong></h5>
+                        <div>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Pendaftaran Jalur Tes Gelombang I</td>
+                                        <td></td>
+                                        <td>: 1 Desember 2023 - 30 Maret 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pelaksanaan Tes Gelombang I</td>
+                                        <td></td>
+                                        <td>: 1 - 8 April 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pengumuman Penerimaan Jalur Tes Gelombang I</td>
+                                        <td></td>
+                                        <td>: 10 April 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Registrasi Jalur Tes Gelombang I</td>
+                                        <td></td>
+                                        <td>: 11 - 25 April 2024</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-5">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Pendaftaran Jalur Tes Gelombang II</td>
+                                        <td></td>
+                                        <td>: 1 April - 29 Juni 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pelaksanaan Tes Gelombang II</td>
+                                        <td></td>
+                                        <td>: 1 - 8 Juli 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pengumuman Penerimaan Jalur Tes Gelombang II</td>
+                                        <td></td>
+                                        <td>: 11 Juli 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Registrasi Jalur Tes Gelombang II</td>
+                                        <td></td>
+                                        <td>: 12 - 26 Juli 2024</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-5">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Pendaftaran Jalur Tes Gelombang III</td>
+                                        <td></td>
+                                        <td>: 1 Juli - 24 Agustus 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pelaksanaan Tes Gelombang III</td>
+                                        <td></td>
+                                        <td>: 26 - 29 Agustus 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pengumuman Penerimaan Jalur Tes Gelombang III</td>
+                                        <td></td>
+                                        <td>: 30 Agustus 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Registrasi Jalur Tes Gelombang III</td>
+                                        <td></td>
+                                        <td>: 31 Agustus - 7 September 2024</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div class="tab-content" id="tabprestasi">
-                        <h3 class="card-title text-center">Jalur Prestasi</h3>
-                        <p class="card-text text-muted">This is the content for Tab 1.</p>
+                    <div class="mt-5">
+                        <h5><strong>Persyaratan</strong></h5>
+                        <ol>
+                            <li>Foto 4 x 6</li>
+                            <li>Ijazah</li>
+                            <li>Kartu Tanda Penduduk (KTP)</li>
+                            <li>Surat Keterangan Lulus (Ijazah Belum Terbit)</li>
+                            <li>Surat Keterangan Kelakuan Baik/SKKB (Dikeluarkan Pihak Sekolah)</li>
+                            <li>Kartu Keluarga</li>
+                            <li>Akta Kelahiran</li>
+                        </ol>
                     </div>
-                    <div class="tab-content" id="tabtes">
-                        <h3 class="card-title text-center">Jalur Tes</h3>
-                        <p class="card-text text-muted">This is the content for Tab 2.</p>
+                    <div class="mt-5">
+                        <h5><strong>Pembayaran</strong></h5>
+                        <ul>
+                            <li>Biaya Registrasi <strong>Rp. {{ rupiah($biaya[0]->test_biaya) }}</strong></li>
+                            <li>Biaya Pengembangan Kampus <strong>Rp.
+                                    {{ rupiah($biaya[1]->test_biaya) }}</strong></li>
+                            <li>Biaya Kuliah (SPP Tetap <strong>Rp.
+                                    {{ rupiah($biaya[2]->test_biaya) }}</strong>/Semester dan SKS <strong>Rp.
+                                    {{ rupiah($biaya[3]->test_biaya) }}</strong>/SKS)</li>
+                        </ul>
                     </div>
-                    <div class="tab-content" id="tabreg2">
-                        <h3 class="card-title text-center">Jalur Reguler 2</h3>
-                        <p class="card-text text-muted">This is the content for Tab 3.</p>
+                </div>
+                <div class="tab-pane fade" id="tabreg2">
+                    <h3 class="card-title text-center text-primary"><strong>Jalur Reguler II</strong></h3>
+                    <div>
+                        <h5><strong>Jadwal</strong></h5>
+                        <div>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Pendaftaran</td>
+                                        <td></td>
+                                        <td>: 1 Desember 2023 - 17 Agustus 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pengecekan Kuota per-prodi</td>
+                                        <td></td>
+                                        <td>: 18 - 21 Agustus 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pengumuman Penerimaan (Bagi prodi yang memenuhi kuota)</td>
+                                        <td></td>
+                                        <td>: 23 Agustus 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Registrasi</td>
+                                        <td></td>
+                                        <td>: 24 Agustus - 7 September 2024</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    {{-- <button id="btnTab1" class="btn btn-outline-primary btn-active">Change to Tab 1</button>
-                    <button id="btnTab2" class="btn btn-outline-primary">Change to Tab 2</button>
-                    <button id="btnTab3" class="btn btn-outline-primary">Change to Tab 3</button> --}}
+                    <div class="mt-5">
+                        <h5><strong>Persyaratan</strong></h5>
+                        <ol>
+                            <li>Foto 4 x 6</li>
+                            <li>Ijazah</li>
+                            <li>Surat Keterangan Catatan Kepolisian (SKCK)</li>
+                            <li>Kartu Keluarga</li>
+                            <li>Kartu Tanda Penduduk (KTP)</li>
+                            <li>Akta Kelahiran</li>
+                        </ol>
+                    </div>
+                    <div class="mt-5">
+                        <h5><strong>Pembayaran</strong></h5>
+                        <ul>
+                            <li>Biaya Registrasi <strong>Rp. {{ rupiah($biaya[0]->reguler2_biaya) }}</strong></li>
+                            <li>Biaya Pengembangan Kampus <strong>Rp.
+                                    {{ rupiah($biaya[1]->reguler2_biaya) }}</strong></li>
+                            <li>Biaya Kuliah (SPP Tetap <strong>Rp.
+                                    {{ rupiah($biaya[2]->reguler2_biaya) }}</strong>/Semester dan SKS <strong>Rp.
+                                    {{ rupiah($biaya[3]->reguler2_biaya) }}</strong>/SKS)</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="card mt-3">
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Informasi Pembayaran PMB</h6>
-        </div>
-        <div class="card-body">
-
-        </div>
-    </div>
-    @push('footer')
-        {{-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script> --}}
-        {{-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
-        <script>
-            $(document).ready(function() {
-                $("#tabprestasi").addClass("active");
-                // Handle tab clicks
-                $(".nav-link").on("click", function() {
-                    $("#before").addClass("tab-content");
-                    $(".nav-link").removeClass("active");
-                    $(this).addClass("active");
-                });
-
-                // Handle button clicks to change content
-                // $("#btnTab1").on("click", function() {
-                //     location.href = "#tabprestasi";
-                // });
-
-                // $("#btnTab2").on("click", function() {
-                //     location.href = "#tabtes";
-                // });
-
-                // $("#btnTab3").on("click", function() {
-                //     location.href = "#tabreg2";
-                // });
-            });
-        </script>
-    @endpush
+    @php
+        function rupiah($angka)
+        {
+            $hasil_rupiah = number_format($angka, 0, ',', '.');
+            return $hasil_rupiah;
+        }
+    @endphp
 @endsection
