@@ -49,8 +49,8 @@
         </tbody>
     </table>
     <p>
-        Untuk Login Silahkan <a href="https://daftar.persadakhatulistiwa.ac.id/login/index.html">Klik disini</a> untuk
-        proses lebih lanjut. <br><br>
+        Untuk Login Silahkan <a href="https://daftar.persadakhatulistiwa.ac.id">Klik disini</a> atau kunjungi website
+        https://daftar.persadakhatulistiwa.ac.id. <br><br>
 
         Terima Kasih, <br>
         Panitia PMB

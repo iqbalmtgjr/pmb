@@ -29,7 +29,7 @@ Route::group(['middleware' => 'isTamu'], function () {
     Route::post('login', [AuthController::class, 'loginPost']);
 });
 
-Route::group(['middleware' => ['isLogin']], function () {
+Route::group(['middleware' => ['isLogin', 'custom.user']], function () {
     // Informasi
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('infoPmb', [InfoController::class, 'index']);

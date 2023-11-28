@@ -286,9 +286,11 @@
         </div>
         @if ($data->valid_bayar == 2 && $cekjalur->jalur == 'test')
             <a href="{{ url('infoTes') }}" class="btn btn-info btn-md">Lihat Informasi Tes Online</a>
-            <a href="{{ url('calon') }}" class="btn btn-primary btn-md">Lanjutkan Pengisian Data</a>
+            <a href="{{ url('calon') }}" class="btn btn-success btn-md">Lanjutkan Pengisian Data <i
+                    class="fas fa-arrow-right"></i></a>
         @elseif($data->valid_bayar == 2 && $cekjalur->jalur == 'prestasi')
-            <a href="{{ url('calon') }}" class="btn btn-primary btn-md float-right">Lanjutkan Pengisian Data</a>
+            <a href="{{ url('calon') }}" class="btn btn-success btn-md float-right">Lanjutkan Pengisian Data <i
+                    class="fas fa-arrow-right"></i></a>
         @endif
     @endif
 

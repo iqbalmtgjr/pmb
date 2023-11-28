@@ -9,17 +9,25 @@
     </div>
     <div class="card">
         <div class="card-header text-white text-center">
-            <ul class="nav nav-pills card-header-pills">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="pill" href="#tabprestasi">Jalur Prestasi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#tabtes">Jalur Tes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#tabreg2">Jalur Reguler 2</a>
-                </li>
-            </ul>
+            <div class="row">
+                <div class="col">
+                    <ul class="nav nav-pills card-header-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="pill" href="#tabprestasi">Jalur Prestasi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#tabtes">Jalur Tes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#tabreg2">Jalur Reguler 2</a>
+                        </li>
+                    </ul>
+                </div>
+                {{-- <div class="col">
+                    <a href="{{ url('info') }}" class="btn btn-success btn-md float-right">Lanjut Pendaftaran <i
+                            class="fas fa-arrow-right"></i></a>
+                </div> --}}
+            </div>
         </div>
         <div class="card-body">
             <div class="tab-content">
@@ -111,7 +119,7 @@
                             <li>Surat Keterangan Kelakuan Baik/SKKB (Dikeluarkan Pihak Sekolah)</li>
                             <li>Kartu Keluarga</li>
                             <li>Akta Kelahiran</li>
-                            <li>Nilai Rapor Semester I-V (Prestasi Akademik)</li>
+                            <li>Nilai Rapor Semester 1 s/d Semester 4 (Prestasi Akademik)</li>
                             <li>Sertifikat/Piagam (Prestasi Non Akademik)</li>
                         </ol>
                     </div>
@@ -291,6 +299,8 @@
             </div>
         </div>
     </div>
+    <a href="{{ url('info') }}" class="btn btn-success btn-sm float-right mt-3 mb-3">Lanjut Pendaftaran <i
+            class="fas fa-arrow-right"></i></a>
     @php
         function rupiah($angka)
         {

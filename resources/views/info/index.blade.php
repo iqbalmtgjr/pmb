@@ -91,8 +91,7 @@
 
         </div>
     </div>
-    <a class="btn btn-primary btn-md float-right" href="{{ url('pembayaran') }}" style="margin-left: 7px;">Lanjutkan
-        untuk
-        info pembayaran anda</a>
+    <a class="btn btn-success btn-md float-right" href="{{ url('pembayaran') }}" style="margin-left: 7px;">Lanjut
+        Pendaftaran <i class="fas fa-arrow-right"></i></a>
     {{-- @endif --}}
 @endsection

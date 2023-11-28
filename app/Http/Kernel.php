@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'isLogin' => isLogin::class,
         'isTamu' => isTamu::class,
+        'custom.user' => \App\Http\Middleware\CustomUserMiddleware::class,
     ];
 }

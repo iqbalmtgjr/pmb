@@ -38,11 +38,13 @@
             <span>Informasi Pembayaran</span></a>
     </li>
 
-    <li class="nav-item {{ request()->is('infoTes') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ url('infoTes') }}">
-            <i class="fas fa-tasks"></i>
-            <span>Informasi Tes PMB</span></a>
-    </li>
+    @if (auth()->user()->jalur == 'test')
+        <li class="nav-item {{ request()->is('infoTes') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ url('infoTes') }}">
+                <i class="fas fa-tasks"></i>
+                <span>Informasi Tes PMB</span></a>
+        </li>
+    @endif
 
     <hr class="sidebar-divider">
 
