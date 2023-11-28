@@ -84,6 +84,6 @@ class OrtuController extends Controller
         }
 
         toastr()->success('Data berhasil diinput!, Silahkan lanjutkan mengupload berkas yang diperlukan', 'Selamat');
-        return redirect()->back();
+        return redirect('upload');
     }
 }

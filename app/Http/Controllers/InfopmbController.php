@@ -49,6 +49,6 @@ class InfopmbController extends Controller
         }
 
         toastr()->success('Data berhasil diinput!', 'Selamat');
-        return redirect()->back();
+        return redirect('ortu');
     }
 }
