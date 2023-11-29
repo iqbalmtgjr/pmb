@@ -16,7 +16,7 @@ class CustomUserMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = Auth::user();
+        $user = Auth::user()->where('pengenal_akun', auth()->user()->pengenal_akun);
 
         // Lakukan join dengan tabel lain
         // Gantilah 'nama_tabel_lain' dan 'nama_kolom_penggabung' sesuai kebutuhan

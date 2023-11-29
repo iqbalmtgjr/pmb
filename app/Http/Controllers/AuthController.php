@@ -88,7 +88,7 @@ class AuthController extends Controller
         \Mail::to($request->email_akun_siswa)->send(new SendAkun($akun));
 
         toastr()->success('Akun berhasil dibuat! Cek email anda untuk melihat password yang digunakan.', 'Selamat');
-        return redirect('/');
+        return redirect('/')->with('sukses', 'Cek email anda untuk melihat password');
     }
 
     public function login()

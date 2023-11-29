@@ -39,7 +39,15 @@
                         </H4>
                     </div>
                 </div>
-                <div class="card o-hidden border-0 shadow-lg my-5">
+                @if (Session::has('sukses'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('sukses') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+                <div class="card o-hidden border-0 shadow-lg my-3">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
 
