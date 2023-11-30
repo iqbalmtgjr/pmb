@@ -7,6 +7,8 @@
         <div class="card-body">
             <p>Upload semua berkas sesuai formulir dibawah ini. Jika anda menggunakan smartphone geser kekanan untuk melihat
                 tombol upload berkas.</p>
+            <a href="#" target="_blank" class="btn btn-success btn-md float-right mb-3"><i
+                    class="fas fa-file-download"></i>Download Kartu Pendaftaran</a>
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Datasekolah;
 use App\Models\Sekolah;
 use App\Models\Pmbprodi;
 use App\Models\Pmbsiswa;
 use App\Models\Pmbupload;
 use App\Models\Pmbsekolah;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class PendidikanController extends Controller
@@ -18,14 +18,16 @@ class PendidikanController extends Controller
         $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
         $data = Pmbsekolah::where('sekolah_id_siswa', auth()->user()->pengenal_akun)->first();
         $upload = Pmbupload::where('upload_id_siswa', auth()->user()->pengenal_akun)->first();
-        // $smk = json_decode(Http::get('https://api-sekolah-indonesia.vercel.app/sekolah/SMK?page=1&perPage=5'));
-        // $sma = json_decode(Http::get('https://api-sekolah-indonesia.vercel.app/sekolah/SMA'));
         $cekvalid = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
+        $datasekolah = Datasekolah::all();
+        // foreach ($datasekolah as $item) {
+        //     dd($item);
+        // }
         if ($cekvalid->valid_bayar != 2) {
             toastr()->warning('Anda belum tervalidasi', 'Peringatan');
             return redirect()->back();
         }
-        return view('pendidikan.index', compact('data', 'cekjalur', 'upload'));
+        return view('pendidikan.index', compact('data', 'cekjalur', 'upload', 'datasekolah'));
     }
 
     public function postPendidikan(Request $request)
@@ -35,7 +37,6 @@ class PendidikanController extends Controller
             $validator = Validator::make($request->all(), [
                 'jenis_sekolah' => 'required',
                 'nama_sekolah' => 'required',
-                'alamat_sekolah' => 'required',
                 'jurusan_sekolah' => 'required',
                 'tahun_lulus_sekolah' => 'required',
                 'ijasah_sekolah' => 'nullable',
@@ -69,8 +70,7 @@ class PendidikanController extends Controller
                 Pmbsekolah::create([
                     'sekolah_id_siswa' => auth()->user()->pengenal_akun,
                     'jenis_sekolah' => $request->jenis_sekolah,
-                    'nama_sekolah' => $request->nama_sekolah,
-                    'alamat_sekolah' => $request->alamat_sekolah,
+                    'data_sekolah_id' => $request->nama_sekolah,
                     'jurusan_sekolah' => $request->jurusan_sekolah,
                     'tahun_lulus_sekolah' => $request->tahun_lulus_sekolah,
                 ]);
@@ -78,8 +78,7 @@ class PendidikanController extends Controller
                 $sklh->update([
                     'sekolah_id_siswa' => auth()->user()->pengenal_akun,
                     'jenis_sekolah' => $request->jenis_sekolah,
-                    'nama_sekolah' => $request->nama_sekolah,
-                    'alamat_sekolah' => $request->alamat_sekolah,
+                    'data_sekolah_id' => $request->nama_sekolah,
                     'jurusan_sekolah' => $request->jurusan_sekolah,
                     'tahun_lulus_sekolah' => $request->tahun_lulus_sekolah,
                 ]);
@@ -89,8 +88,7 @@ class PendidikanController extends Controller
                 Pmbsekolah::create([
                     'sekolah_id_siswa' => auth()->user()->pengenal_akun,
                     'jenis_sekolah' => $request->jenis_sekolah,
-                    'nama_sekolah' => $request->nama_sekolah,
-                    'alamat_sekolah' => $request->alamat_sekolah,
+                    'data_sekolah_id' => $request->nama_sekolah,
                     'jurusan_sekolah' => $request->jurusan_sekolah,
                     'tahun_lulus_sekolah' => $request->tahun_lulus_sekolah,
                     'nilai_satu' => $request->nilai_satu,
@@ -102,8 +100,7 @@ class PendidikanController extends Controller
                 $sklh->update([
                     'sekolah_id_siswa' => auth()->user()->pengenal_akun,
                     'jenis_sekolah' => $request->jenis_sekolah,
-                    'nama_sekolah' => $request->nama_sekolah,
-                    'alamat_sekolah' => $request->alamat_sekolah,
+                    'data_sekolah_id' => $request->nama_sekolah,
                     'jurusan_sekolah' => $request->jurusan_sekolah,
                     'tahun_lulus_sekolah' => $request->tahun_lulus_sekolah,
                     'nilai_satu' => $request->nilai_satu,

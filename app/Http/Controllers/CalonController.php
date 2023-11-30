@@ -33,6 +33,7 @@ class CalonController extends Controller
             'agama_siswa' => 'required',
             'desa_siswa' => 'required',
             'kec_siswa' => 'required',
+            'kab_siswa' => 'required',
             'pos_siswa' => 'required',
             'hp_siswa' => 'required',
         ]);
@@ -50,5 +51,9 @@ class CalonController extends Controller
 
         toastr()->success('Data berhasil diinput!, Silahkan lanjutkan mengisi data sekolah', 'Selamat');
         return redirect('pendidikan');
+    }
+
+    public function downloadkartu()
+    {
     }
 }

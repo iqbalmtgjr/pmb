@@ -88,10 +88,33 @@
                     @endif
                 </div>
             </div>
-
+            @if (auth()->user()->valid_bayar == '2')
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-4 col-form-label">Status</label>
+                    <div class="col-sm-8">
+                        <span class="form-control text-success">Sudah Divalidasi</span>
+                    </div>
+                </div>
+                <a class="btn btn-success btn-sm" href="https://chat.whatsapp.com/I6rVyHgbNzULLoymOiZFqq"><span
+                        class="fab fa-whatsapp"></span><i> Klik Disini Untuk
+                        Bergabung Ke Grup Mahasiswa Baru</i></a>
+            @elseif (auth()->user()->valid_bayar == null)
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-4 col-form-label">Status</label>
+                    <div class="col-sm-8">
+                        <span class="form-control text-danger">Belum Divalidasi</span>
+                    </div>
+                </div>
+            @else
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-4 col-form-label">Status</label>
+                    <div class="col-sm-8">
+                        <span class="form-control text-warning">Tidak dapat divalidasi! Hubungi panitia PMB</span>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
     <a class="btn btn-success btn-md float-right" href="{{ url('pembayaran') }}" style="margin-left: 7px;">Lanjut
         Pendaftaran <i class="fas fa-arrow-right"></i></a>
-    {{-- @endif --}}
 @endsection

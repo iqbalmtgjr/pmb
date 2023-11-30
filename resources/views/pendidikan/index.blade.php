@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@push('header')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
 @section('content')
     {{-- <h1 class="h3 mb-4 text-gray-800">Formulir Pendidikan</h1> --}}
     <div class="card">
@@ -31,6 +34,7 @@
                                 Madrasah Aliyah Kejuruan
                             </option>
                         </select>
+
                         @error('jenis_sekolah')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -42,25 +46,17 @@
                     <label for="namasekolah" class="col-sm-2 col-form-label">Nama Sekolah<strong
                             style="color: red">*</strong></label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control  @error('nama_sekolah') is-invalid @enderror"
-                            id="namasekolah" name="nama_sekolah" placeholder="Nama Sekolah"
-                            value="{{ $data == true && $data->nama_sekolah != null ? $data->nama_sekolah : old('nama_sekolah') }}">
-                        <p class="text-warning">Contoh format penulisan nama sekolah: SMA NEGERI 1 SINTANG</p>
+                        <select class="form-control select2 @error('nama_sekolah') is-invalid @enderror" name="nama_sekolah"
+                            data-placeholder="-- Cari Sekolah --" style="width: 100%;">
+                            <option value="">-- Cari Sekolah --</option>
+                            @foreach ($datasekolah as $item)
+                                <option value="{{ $item->id_data_sekolah }}"
+                                    @if ($data == true && $data->data_sekolah_id != null) {{ $data->data_sekolah_id == $item->id_data_sekolah ? 'selected' : '' }} @else {{ old('nama_sekolah') == $item->id_data_sekolah ? 'selected' : '' }} @endif>
+                                    {{ $item->nama_sekolah }}
+                                </option>
+                            @endforeach
+                        </select>
                         @error('nama_sekolah')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="alamat" class="col-sm-2 col-form-label">Alamat<strong
-                            style="color: red">*</strong></label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control  @error('alamat_sekolah') is-invalid @enderror"
-                            id="alamat" name="alamat_sekolah" placeholder="Alamat Sekolah"
-                            value="{{ $data == true && $data->alamat_sekolah != null ? $data->alamat_sekolah : old('alamat_sekolah') }}">
-                        @error('alamat_sekolah')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -253,7 +249,12 @@
     @include('pendidikan.uploadsmt4')
     @include('upload.piagam')
     @push('footer')
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script>
+            $(document).ready(function() {
+                $('.select2').select2();
+            });
+
             $(function() {
                 $.ajaxSetup({
                     headers: {

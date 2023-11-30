@@ -77,8 +77,12 @@
                                 @if ($data == true && $data->media_info != null) {{ $data->media_info == 'poster' ? 'selected' : '' }} @else {{ old('media_info') == 'poster' ? 'selected' : '' }} @endif>
                                 Poster
                             </option>
+                            <option value="whatsapp"
+                                @if ($data == true && $data->media_info != null) {{ $data->media_info == 'whatsapp' ? 'selected' : '' }} @else {{ old('media_info') == 'whatsapp' ? 'selected' : '' }} @endif>
+                                Whatsapp
+                            </option>
                         </select>
-                        @error('no_hp')
+                        @error('media_info')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

@@ -199,6 +199,20 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="inputKabupaten" class="col-sm-2 col-form-label">Kabupaten<strong
+                            style="color: red">*</strong></label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control @error('kab_siswa') is-invalid @enderror"
+                            id="inputKabupaten" name="kab_siswa" placeholder="Kabupaten"
+                            value="{{ $data->kab_siswa != null ? $data->kab_siswa : old('kab_siswa') }}">
+                        @error('kab_siswa')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="inputKodePos" class="col-sm-2 col-form-label">Kode Pos<strong
                             style="color: red">*</strong></label>
                     <div class="col-sm-10">

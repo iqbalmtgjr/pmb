@@ -23,8 +23,6 @@ class InfopmbController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama_informan' => 'nullable',
-            'no_hp' => 'nullable',
             'media_info' => 'required',
         ]);
 
