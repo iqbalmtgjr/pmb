@@ -76,4 +76,7 @@ Route::group(['middleware' => ['isLogin', 'custom.user']], function () {
     Route::post('postSkkb', [FileuploadController::class, 'skkb']);
     Route::post('postSkl', [FileuploadController::class, 'skl']);
     Route::post('postPiagam', [FileuploadController::class, 'piagam']);
+
+    // Download Kartu Pendaftaran
+    Route::get('download-kartu-pendaftaran', [CalonController::class, 'downloadkartu']);
 });

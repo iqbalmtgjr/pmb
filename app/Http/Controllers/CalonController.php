@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pmbakun;
 use App\Models\Pmbsiswa;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -55,5 +57,13 @@ class CalonController extends Controller
 
     public function downloadkartu()
     {
+        $warga = Pmbakun::leftJoin('pmb_siswa', 'pmb_akun.pengenal_akun', '=', 'pmb_siswa.akun_siswa')
+            ->leftJoin('pmb_prodi', 'pmb_akun.pengenal_akun', '=', 'pmb_prodi.prodi_id_siswa')
+            ->leftJoin('prodi', 'pmb_prodi.pilihan_satu', '=', 'prodi.id_prodi')
+            ->leftJoin('prod', 'pmb_prodi.pilihan_dua', '=', 'prod.id_prodi_baru')
+            ->where('pmb_akun.pengenal_akun', auth()->user()->pengenal_akun)
+            ->first();
+        $pdf = Pdf::loadView('kartupendaftaran.kartu_pendaftaran', compact('warga'))->setPaper('a5', 'potrait');
+        return $pdf->stream('Kartu Pendaftaran.pdf');
     }
 }
