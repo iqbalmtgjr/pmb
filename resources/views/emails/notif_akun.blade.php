@@ -17,13 +17,11 @@
         Informasi Pendaftaran Mahasiswa (SIPEMA).
     </p>
     <table>
-        <thead>
+        <tbody>
             <tr>
                 <td>Nama</td>
                 <td>: {{ $akun->nama_siswa }}</td>
             </tr>
-        </thead>
-        <tbody>
             <tr>
                 <td>Jalur</td>
                 @if ($akun->jalur == 'test')
@@ -49,8 +47,8 @@
         </tbody>
     </table>
     <p>
-        Untuk Login Silahkan <a href="https://daftar.persadakhatulistiwa.ac.id">Klik disini</a> atau kunjungi website
-        https://daftar.persadakhatulistiwa.ac.id. <br><br>
+        Untuk Login Silahkan <a href="https://daftar.persadakhatulistiwa.ac.id/login">Klik disini</a> atau kunjungi
+        website <i>https://daftar.persadakhatulistiwa.ac.id/login</i>. <br><br>
 
         Terima Kasih, <br>
         Panitia PMB
