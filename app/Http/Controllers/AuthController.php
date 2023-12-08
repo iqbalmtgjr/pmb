@@ -60,6 +60,7 @@ class AuthController extends Controller
             'nis_siswa' => $request->nis_siswa,
             'nama_siswa' => $request->nama_siswa,
             'hp_siswa' => $request->hp_siswa,
+            'valid_bayar' => ""
         ]);
 
         Pmbprodi::create([

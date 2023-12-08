@@ -152,7 +152,7 @@
             <div class="card-body">
                 @if ($cekputus == false)
                     @if ($data->metode_bayar == null && $data->valid_bayar == null)
-                        <h5>Untuk melanjutkan proses pendaftaran anda harus memilih metode pembayaran registrasi PMB!!!</h5>
+                        <h5>Untuk melanjutkan proses pendaftaran anda harus memilih metode pembayaran registrasi PMB.</h5>
                         <form action="{{ url('postMetodeBayar') }}" method="post">
                             @csrf
                             <div class="form-group">
@@ -267,7 +267,13 @@
                         @endif
                     @elseif ($data->metode_bayar == 1)
                         @if ($data->valid_bayar == null)
-                            <h5>Silahkan menunggu validasi pembayaran oleh panitia PMB</h5>
+                            <h5>Silahkan melakukan pembayaran ke panitia PMB langsung ke kampus STKIP Persada Khatulistiwa
+                                Sintang. Dan silahkan menunggu validasi pembayaran oleh panitia PMB</h5>
+
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.8166153002353!2d111.47641817496451!3d0.05296984994651229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31fe21386fed864f%3A0xa775a01ca2476eae!2sSTKIP%20Persada%20Khatulistiwa%20Sintang!5e0!3m2!1sid!2sid!4v1701656386949!5m2!1sid!2sid"
+                                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                         @elseif($data->valid_bayar == 2)
                             <h5>Silahkan untuk melanjutkan dalam pengisian data lengkap. Klik link dibawah untuk melanjutkan
                                 ke
