@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Pmbakun;
 use App\Models\Pmbsiswa;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class CalonController extends Controller
 {
@@ -27,21 +27,26 @@ class CalonController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
-            'nik_siswa' => 'required',
-            'tmp_lahir_siswa' => 'required',
+            'nik_siswa' => 'required|max:16',
+            'tmp_lahir_siswa' => 'required|max:50',
             'tgl_lahir_siswa' => 'required',
             'jekel_siswa' => 'required',
             'agama_siswa' => 'required',
-            'desa_siswa' => 'required',
-            'kec_siswa' => 'required',
-            'kab_siswa' => 'required',
-            'pos_siswa' => 'required',
-            'hp_siswa' => 'required',
+            'alamat_siswa' => 'max:100',
+            'dusun_siswa' => 'max:50',
+            'rtrw_siswa' => 'max:20',
+            'desa_siswa' => 'required|max:50',
+            'kec_siswa' => 'required|max:50',
+            'kab_siswa' => 'required|max:50',
+            'pos_siswa' => 'required|max:5',
+            'hp_siswa' => 'required|max:13',
+            'kps_siswa' => 'max:50',
         ]);
 
         if ($validator->fails()) {
-            toastr()->error('Ada Kesalahan Saat Penginputan!', 'Gagal');
+            toastr()->error('Ada Kesalahan Saat Penginputan!, lebih teliti lagi', 'Gagal');
             return redirect()
                 ->back()
                 ->withErrors($validator)
@@ -63,7 +68,7 @@ class CalonController extends Controller
             ->leftJoin('prod', 'pmb_prodi.pilihan_dua', '=', 'prod.id_prodi_baru')
             ->where('pmb_akun.pengenal_akun', auth()->user()->pengenal_akun)
             ->first();
-        $pdf = Pdf::loadView('kartupendaftaran.kartu_pendaftaran', compact('warga'))->setPaper('a5', 'potrait');
+        $pdf = Pdf::loadView('pdf.kartu_pendaftaran', compact('warga'))->setPaper('a5', 'potrait');
         return $pdf->stream('Kartu Pendaftaran.pdf');
     }
 }

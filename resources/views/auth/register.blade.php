@@ -6,8 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description"
+        content="Pendaftaran mahasiswa baru di STKIP Persada Khatulistiwa merupakan pengalaman yang menyenangkan, tanpa harus datang langsung ke kampus, pastikan kamu sudah kenal dengan STKIP Persada Khatulistiwa, tempat yang menyajikan pendidikan dan karir yang membanggakan.">
+    <meta name="author" content="STKIP Persada Khatulistiwa, yang menyajikan pendidikan dan karir yang membanggakan.">
 
     <title>Daftar PMB STKIP Persada Khatulistiwa</title>
 
@@ -95,9 +96,9 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <select name="prodi"
+                                        <select id="prodi" name="prodi"
                                             class="form-control @error('prodi') is-invalid @enderror">
-                                            <option value="">-- PILIH PRODI 1 --</option>
+                                            <option value="">-- PILIHAN PRODI 1 --</option>
                                             <option value="1" @selected(old('prodi') == '1')>Pendidikan Bahasa dan
                                                 Sastra Indonesia</option>
                                             <option value="2" @selected(old('prodi') == '2')>Pendidikan Matematika
@@ -124,7 +125,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-sm-6">
-                                        <select name="prodi2"
+                                        <select id="prodi2" name="prodi2"
                                             class="form-control @error('prodi2') is-invalid @enderror">
                                             <option value=" ">-- PILIHAN PRODI 2 --</option>
                                             <option value="1" @selected(old('prodi') == '1')>Pendidikan Bahasa dan
@@ -194,7 +195,7 @@
                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
                             </div> --}}
                             <div class="text-center">
-                                <a class="small" href="{{ url('/') }}">Sudah punya akun? Login!</a>
+                                <a class="small" href="{{ url('/login') }}">Sudah punya akun? Login!</a>
                             </div>
                         </div>
                     </div>
@@ -214,6 +215,35 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
+    <script>
+        $(document).ready(function() {
+            $("#prodi").change(function() {
+                let selectedProdi1 = $(this).val();
+                $("#prodi2 option").each(function() {
+                    if ($(this).val() == selectedProdi1) {
+                        $(this).prop("disabled", true);
+                        $(this).hide();
+                    } else {
+                        $(this).prop("disabled", false);
+                        $(this).show();
+                    }
+                });
+            });
+            $("#prodi2").change(function() {
+                let selectedProdi2 = $(this).val();
+                $("#prodi option").each(function() {
+                    if ($(this).val() == selectedProdi2) {
+                        $(this).prop("disabled", true);
+                        $(this).hide();
+                    } else {
+                        $(this).prop("disabled", false);
+                        $(this).show();
+                    }
+                });
+            });
+
+        });
+    </script>
 </body>
 
 </html>

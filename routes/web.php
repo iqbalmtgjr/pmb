@@ -23,9 +23,9 @@ use App\Http\Controllers\PendidikanController;
 */
 
 Route::group(['middleware' => 'isTamu'], function () {
-    Route::get('register', [AuthController::class, 'register']);
+    Route::get('/', [AuthController::class, 'register']);
     Route::post('register', [AuthController::class, 'registerPost']);
-    Route::get('/', [AuthController::class, 'login']);
+    Route::get('/login', [AuthController::class, 'login']);
     Route::post('login', [AuthController::class, 'loginPost']);
 });
 
@@ -43,6 +43,7 @@ Route::group(['middleware' => ['isLogin', 'custom.user']], function () {
     // Konfirmasi Bayar AKhir
     Route::get('pembayaran/konfirmasi', [InfoController::class, 'konfirmasi']);
     Route::post('postKonfirmasi', [InfoController::class, 'postKonfirmasi']);
+    Route::get('getdata/{id}', [InfoController::class, 'getdata']);
 
     // Data Calon Mahasiswa
     Route::get('calon', [CalonController::class, 'index']);

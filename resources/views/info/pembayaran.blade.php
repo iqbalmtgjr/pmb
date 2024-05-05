@@ -36,7 +36,7 @@
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-4 col-form-label">Catatan Penerimaan</label>
                     <div class="col-sm-8">
-                        <textarea class="form-control" disabled>{{ $cekputus->note_penerimaan }}</textarea>
+                        <textarea class="form-control" rows="5" disabled>{{ $cekputus->note_penerimaan }}</textarea>
                     </div>
                 </div>
                 <table class="table table-bordered">
@@ -135,10 +135,10 @@
             <div class="text-center alert alert-success" role="alert">
                 Status Pembayaran <br> <strong> Sudah Divalidasi! </strong>
             </div>
-        @elseif($data->metode_bayar != null && $data->valid_bayar == 1)
-            <div class="text-center alert alert-success" role="alert">
-                Status Pembayaran <br> <strong> Tidak Divalidasi! </strong> <br> Pembayaran tidak cocok direkening
-                koran STKIP Persada Khatulistiwa
+        @elseif($data->metode_bayar != null && $data->valid_bayar == 3)
+            <div class="text-center alert alert-danger" role="alert">
+                Status Pembayaran <br> <strong> Tidak Valid! </strong> <br> Pembayaran tidak cocok direkening
+                koran STKIP Persada Khatulistiwa. <br> Hubungi panitia PMB STKIP Persada Khatulistiwa Sintang
             </div>
         @elseif($data->metode_bayar != null)
             <div class="text-center alert alert-warning" role="alert">
@@ -152,7 +152,9 @@
             <div class="card-body">
                 @if ($cekputus == false)
                     @if ($data->metode_bayar == null && $data->valid_bayar == null)
-                        <h5>Untuk melanjutkan proses pendaftaran anda harus memilih metode pembayaran registrasi PMB!!!</h5>
+                        <h5>Untuk melanjutkan proses pendaftaran anda harus memilih metode pembayaran registrasi PMB.</h5>
+                        <p class="text-warning">Jika anda memilih pilihan Panitia PMB, maka harus dibayar langsung kekampus.
+                        </p>
                         <form action="{{ url('postMetodeBayar') }}" method="post">
                             @csrf
                             <div class="form-group">
@@ -193,6 +195,8 @@
                                 lama
                                 dilakukan 2 x 24 jam.
                             </p>
+                            <strong class="text-danger">Tidak disarankan membayar melalui pihak ketiga seperti DANA, FLIP,
+                                OVO, dan lain-lain.</strong>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="card bg-success">
@@ -267,7 +271,13 @@
                         @endif
                     @elseif ($data->metode_bayar == 1)
                         @if ($data->valid_bayar == null)
-                            <h5>Silahkan menunggu validasi pembayaran oleh panitia PMB</h5>
+                            <h5>Silahkan melakukan pembayaran ke panitia PMB langsung ke kampus STKIP Persada Khatulistiwa
+                                Sintang. Dan silahkan menunggu validasi pembayaran oleh panitia PMB</h5>
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.8166153002353!2d111.47641817496451!3d0.05296984994651229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31fe21386fed864f%3A0xa775a01ca2476eae!2sSTKIP%20Persada%20Khatulistiwa%20Sintang!5e0!3m2!1sid!2sid!4v1701656386949!5m2!1sid!2sid"
+                                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
                         @elseif($data->valid_bayar == 2)
                             <h5>Silahkan untuk melanjutkan dalam pengisian data lengkap. Klik link dibawah untuk melanjutkan
                                 ke
@@ -286,11 +296,9 @@
         </div>
         @if ($data->valid_bayar == 2 && $cekjalur->jalur == 'test')
             <a href="{{ url('infoTes') }}" class="btn btn-info btn-md">Lihat Informasi Tes Online</a>
-            <a href="{{ url('calon') }}" class="btn btn-success btn-md">Lanjutkan Pengisian Data <i
-                    class="fas fa-arrow-right"></i></a>
+            <a href="{{ url('calon') }}" class="btn btn-primary btn-md">Lanjutkan Pengisian Data</a>
         @elseif($data->valid_bayar == 2 && $cekjalur->jalur == 'prestasi')
-            <a href="{{ url('calon') }}" class="btn btn-success btn-md float-right">Lanjutkan Pengisian Data <i
-                    class="fas fa-arrow-right"></i></a>
+            <a href="{{ url('calon') }}" class="btn btn-primary btn-md float-right">Lanjutkan Pengisian Data</a>
         @endif
     @endif
 

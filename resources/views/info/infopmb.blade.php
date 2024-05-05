@@ -1,5 +1,17 @@
 @extends('layouts.master')
 @section('content')
+    @if ($data->metode_bayar != null && $data->valid_bayar == 2)
+        <div class="text-center alert alert-success" role="alert">
+            Status Pembayaran <br> <strong> Sudah Divalidasi! </strong> <br>
+            <a class="btn btn-secondary btn-sm" href="https://chat.whatsapp.com/I6rVyHgbNzULLoymOiZFqq"><span
+                    class="fab fa-whatsapp text-success"></span> <strong>Klik Disini Untuk Bergabung Grup PMB</strong></a>
+        </div>
+    @elseif($data->metode_bayar != null && $data->valid_bayar == 3)
+        <div class="text-center alert alert-danger" role="alert">
+            Status Pembayaran <br> <strong> Tidak Valid! </strong> <br> Pembayaran tidak cocok direkening
+            koran STKIP Persada Khatulistiwa. <br> Hubungi panitia PMB STKIP Persada Khatulistiwa Sintang
+        </div>
+    @endif
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Informasi Pendaftaran, Persyaratan dan Pembayaran PMB</h1>
         <a download href="{{ asset('assets/img/brosur.jpg') }}"
@@ -301,11 +313,11 @@
     </div>
     <a href="{{ url('info') }}" class="btn btn-success btn-sm float-right mt-3 mb-3">Lanjut Pendaftaran <i
             class="fas fa-arrow-right"></i></a>
-    @php
-        function rupiah($angka)
-        {
-            $hasil_rupiah = number_format($angka, 0, ',', '.');
-            return $hasil_rupiah;
-        }
-    @endphp
+    <?php
+    function rupiah($angka)
+    {
+        $hasil_rupiah = number_format($angka, 0, ',', '.');
+        return $hasil_rupiah;
+    }
+    ?>
 @endsection

@@ -40,7 +40,7 @@ class FileuploadController extends Controller
         $extension = $request->foto->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('foto')->move(public_path('assets/berkas/foto/'), $nama_file);
+            $request->file('foto')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/foto/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'foto_upload' => $nama_file
@@ -51,13 +51,13 @@ class FileuploadController extends Controller
         } else {
             if (!empty($data->foto_upload)) {
                 // Hapus yang lama dulu foto filenya
-                $path = public_path('assets/berkas/foto/' . $data->foto_upload);
+                $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/foto/' . $data->foto_upload);
                 if (file_exists($path)) {
                     @unlink($path);
                 }
             }
 
-            $request->file('foto')->move(public_path('assets/berkas/foto/'), $nama_file);
+            $request->file('foto')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/foto/'), $nama_file);
             $data->update([
                 'foto_upload' => $nama_file
             ]);
@@ -85,7 +85,7 @@ class FileuploadController extends Controller
         $extension = $request->bukti->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('bukti')->move(public_path('assets/berkas/bukti/'), $nama_file);
+            $request->file('bukti')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/bukti/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'pembayaran_upload' => $nama_file
@@ -96,13 +96,13 @@ class FileuploadController extends Controller
         } else {
             if (!empty($data->pembayaran_upload)) {
                 // Hapus yang lama dulu foto filenya
-                $path = public_path('assets/berkas/bukti/' . $data->pembayaran_upload);
+                $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/bukti/' . $data->pembayaran_upload);
                 if (file_exists($path)) {
                     @unlink($path);
                 }
             }
 
-            $request->file('bukti')->move(public_path('assets/berkas/bukti/'), $nama_file);
+            $request->file('bukti')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/bukti/'), $nama_file);
             $data->update([
                 'pembayaran_upload' => $nama_file
             ]);
@@ -130,7 +130,7 @@ class FileuploadController extends Controller
         $extension = $request->ijazah->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('ijazah')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('ijazah')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'ijasah_upload' => $nama_file
@@ -141,13 +141,13 @@ class FileuploadController extends Controller
         } else {
             if (!empty($data->ijasah_upload)) {
                 // Hapus yang lama dulu foto filenya
-                $path = public_path('assets/berkas/file_berkas/' . $data->ijasah_upload);
+                $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/' . $data->ijasah_upload);
                 if (file_exists($path)) {
                     @unlink($path);
                 }
             }
 
-            $request->file('ijazah')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('ijazah')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             $data->update([
                 'ijasah_upload' => $nama_file
             ]);
@@ -175,7 +175,7 @@ class FileuploadController extends Controller
         $extension = $request->skck->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('skck')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('skck')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'skck_upload' => $nama_file
@@ -186,13 +186,13 @@ class FileuploadController extends Controller
         } else {
             if (!empty($data->skck_upload)) {
                 // Hapus yang lama dulu foto filenya
-                $path = public_path('assets/berkas/file_berkas/' . $data->skck_upload);
+                $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/' . $data->skck_upload);
                 if (file_exists($path)) {
                     @unlink($path);
                 }
             }
 
-            $request->file('skck')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('skck')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             $data->update([
                 'skck_upload' => $nama_file
             ]);
@@ -220,7 +220,7 @@ class FileuploadController extends Controller
         $extension = $request->kk->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('kk')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('kk')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'kk_upload' => $nama_file
@@ -231,13 +231,13 @@ class FileuploadController extends Controller
         } else {
             if (!empty($data->kk_upload)) {
                 // Hapus yang lama dulu foto filenya
-                $path = public_path('assets/berkas/file_berkas/' . $data->kk_upload);
+                $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/' . $data->kk_upload);
                 if (file_exists($path)) {
                     @unlink($path);
                 }
             }
 
-            $request->file('kk')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('kk')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             $data->update([
                 'kk_upload' => $nama_file
             ]);
@@ -265,7 +265,7 @@ class FileuploadController extends Controller
         $extension = $request->akta_lahir->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('akta_lahir')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('akta_lahir')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'akta_lahir_upload' => $nama_file
@@ -276,13 +276,13 @@ class FileuploadController extends Controller
         } else {
             if (!empty($data->akta_lahir_upload)) {
                 // Hapus yang lama dulu foto filenya
-                $path = public_path('assets/berkas/file_berkas/' . $data->akta_lahir_upload);
+                $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/' . $data->akta_lahir_upload);
                 if (file_exists($path)) {
                     @unlink($path);
                 }
             }
 
-            $request->file('akta_lahir')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('akta_lahir')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             $data->update([
                 'akta_lahir_upload' => $nama_file
             ]);
@@ -310,7 +310,7 @@ class FileuploadController extends Controller
         $extension = $request->ktp->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('ktp')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('ktp')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'ktp_upload' => $nama_file
@@ -321,13 +321,13 @@ class FileuploadController extends Controller
         } else {
             if (!empty($data->ktp_upload)) {
                 // Hapus yang lama dulu foto filenya
-                $path = public_path('assets/berkas/file_berkas/' . $data->ktp_upload);
+                $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/' . $data->ktp_upload);
                 if (file_exists($path)) {
                     @unlink($path);
                 }
             }
 
-            $request->file('ktp')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('ktp')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             $data->update([
                 'ktp_upload' => $nama_file
             ]);
@@ -355,7 +355,7 @@ class FileuploadController extends Controller
         $extension = $request->skkb->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('skkb')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('skkb')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'skkb_upload' => $nama_file
@@ -366,13 +366,13 @@ class FileuploadController extends Controller
         } else {
             if (!empty($data->skkb_upload)) {
                 // Hapus yang lama dulu foto filenya
-                $path = public_path('assets/berkas/file_berkas/' . $data->skkb_upload);
+                $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/' . $data->skkb_upload);
                 if (file_exists($path)) {
                     @unlink($path);
                 }
             }
 
-            $request->file('skkb')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('skkb')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             $data->update([
                 'skkb_upload' => $nama_file
             ]);
@@ -400,7 +400,7 @@ class FileuploadController extends Controller
         $extension = $request->skl->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('skl')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('skl')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'ket_lulus_upload' => $nama_file
@@ -411,13 +411,13 @@ class FileuploadController extends Controller
         } else {
             if (!empty($data->ket_lulus_upload)) {
                 // Hapus yang lama dulu foto filenya
-                $path = public_path('assets/berkas/file_berkas/' . $data->ket_lulus_upload);
+                $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/' . $data->ket_lulus_upload);
                 if (file_exists($path)) {
                     @unlink($path);
                 }
             }
 
-            $request->file('skl')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('skl')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             $data->update([
                 'ket_lulus_upload' => $nama_file
             ]);
@@ -445,8 +445,8 @@ class FileuploadController extends Controller
         $extension = $request->piagam->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('piagam')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
-            Pmbupload::create([
+            $request->file('piagam')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
+            Pmbupload::updateOrCreate([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'piagam' => $nama_file
             ]);
@@ -456,13 +456,13 @@ class FileuploadController extends Controller
         } else {
             if (!empty($data->piagam)) {
                 // Hapus yang lama dulu foto filenya
-                $path = public_path('assets/berkas/file_berkas/' . $data->piagam);
+                $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/' . $data->piagam);
                 if (file_exists($path)) {
                     @unlink($path);
                 }
             }
 
-            $request->file('piagam')->move(public_path('assets/berkas/file_berkas/'), $nama_file);
+            $request->file('piagam')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/file_berkas/'), $nama_file);
             $data->update([
                 'piagam' => $nama_file
             ]);

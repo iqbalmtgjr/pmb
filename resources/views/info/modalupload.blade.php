@@ -10,6 +10,7 @@
             <div class="modal-body">
                 <form action="{{ url('uploadBuktibayar') }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="id" id="id">
                     <input type="file" class="form-control @error('bukti') is-invalid @enderror" name="bukti">
                     <p class="text-warning">(Format file : .jpg, png. Besar file maksimal 5MB)</p>
                     @error('bukti')
@@ -26,3 +27,19 @@
         </div>
     </div>
 </div>
+<script>
+    function getdata(id) {
+        // console.log(id)
+        var url = '{{ url('getdata') }}' + '/' + id
+        // console.log(url);
+
+        $.ajax({
+            url: url,
+            cache: false,
+            success: function(response) {
+                console.log(response);
+                $('#id').val(response.id_bukti_bayar);
+            }
+        });
+    }
+</script>

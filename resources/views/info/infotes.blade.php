@@ -27,9 +27,9 @@
                 @if (auth()->user()->ujian == 1)
                     <div class="form-group row mt-5">
                         <p>Tes penerimaan mahasiswa baru dibagi menjadi dua tahap yaitu tes tertulis dan tes wawancara.
-                            Tes tertulis PMB dilaksanakan secara online, dimulai pada tanggal {{ auth()->user()->tes_lak }}.
+                            Tes tertulis PMB dilaksanakan secara online, dimulai pada tanggal {{ $data->tes_lak }}.
                             <!--Tes tertulis PMB dilaksanakan secara online, dimulai pada tanggal 01 - 15 Agustus 2023. -->
-                            Tes Wawancara PMB dilaksanakan melalui telpon/WhatsApp.
+                            <!--Tes Wawancara PMB dilaksanakan melalui telpon/WhatsApp.-->
                         </p>
                         <p>Tes tertulis dilakukan melalui link <b>&nbsp; https://tespmb.persadakhatulistiwa.ac.id</b>&nbsp;
                         </p>

@@ -1,27 +1,28 @@
 @include('layouts.header')
-<!-- Page Wrapper -->
-<div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-    <!-- Sidebar -->
-    @include('layouts.sidebar')
-    <!-- End of Sidebar -->
+        <!-- Sidebar -->
+        @include('layouts.sidebar')
+        <!-- End of Sidebar -->
 
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-        <!-- Main Content -->
-        <div id="content">
-            <!-- Topbar -->
-            @include('layouts.topbar')
-            <!-- End of Topbar -->
+            <!-- Main Content -->
+            <div id="content">
 
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
-                @yield('content')
+                <!-- Topbar -->
+                @include('layouts.topbar')
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
+                <!-- /.container-fluid -->
+
             </div>
-            <!-- /.container-fluid -->
+            <!-- End of Main Content -->
 
-        </div>
-        <!-- End of Main Content -->
-
-        @include('layouts.footer')
+            @include('layouts.footer')

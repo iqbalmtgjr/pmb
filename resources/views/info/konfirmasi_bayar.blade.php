@@ -85,10 +85,10 @@
                         <div class="form-group row">
                             <label for="jumlah_pembayaran" class="col-sm-4 col-form-label">Jumlah Pembayaran</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control @error('jumlah_pembayaran') is-invalid @enderror"
+                                <input type="number" class="form-control @error('jumlah_pembayaran') is-invalid @enderror"
                                     name="jumlah_pembayaran" value="{{ old('jumlah_pembayaran') }}"
                                     placeholder="Contoh : 6660000">
-                                <i class="text-warning">Tanpa titik atau koma</i>
+                                <strong>Tanpa titik atau koma</strong>
                                 @error('jumlah_pembayaran')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -103,11 +103,19 @@
                             <select class="select2 @error('detail_pembayaran') is-invalid @enderror" multiple
                                 name="detail_pembayaran[]" data-placeholder="-- Pilih item pembayaran --"
                                 style="width: 100%;">
-                                @for ($i = 0; $i < 3; $i++)
-                                    <option value="{{ $biaya[$i]->id_biayakuliahpmb }}">
-                                        {{ $biaya[$i]->item_biaya . '(Rp. ' . number_format($biaya[$i]->test_biaya, '2', ',', '.') . ')' }}
-                                    </option>
-                                @endfor
+                                @if (auth()->user()->jalur == 'test')
+                                    @for ($i = 0; $i < 3; $i++)
+                                        <option value="{{ $biaya[$i]->id_biayakuliahpmb }}">
+                                            {{ $biaya[$i]->item_biaya . ' (Rp. ' . number_format($biaya[$i]->test_biaya, '2', ',', '.') . ')' }}
+                                        </option>
+                                    @endfor
+                                @else
+                                    @for ($i = 0; $i < 3; $i++)
+                                        <option value="{{ $biaya[$i]->id_biayakuliahpmb }}">
+                                            {{ $biaya[$i]->item_biaya . ' (Rp. ' . number_format($biaya[$i]->prestasi_biaya, '2', ',', '.') . ')' }}
+                                        </option>
+                                    @endfor
+                                @endif
                             </select>
                             @error('detail_pembayaran')
                                 <span class="invalid-feedback" role="alert">
@@ -160,8 +168,9 @@
                                                     target="_blank">Lihat</a>
                                             @else
                                                 <span class="text-danger">Silahkan Upload Bukti Pembayaran </span><br>
-                                                <button type="button" data-toggle="modal" data-target="#bukti"
-                                                    class="btn btn-sm btn-success">Upload</button>
+                                                <button onclick="getdata({{ $item->id_bukti_bayar }})"
+                                                    class="btn btn-sm btn-success" data-toggle="modal"
+                                                    data-target="#bukti">Upload</button>
                                             @endif
 
                                         </td>

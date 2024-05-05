@@ -96,8 +96,8 @@
                     </div>
                 </div>
                 <a class="btn btn-success btn-sm" href="https://chat.whatsapp.com/I6rVyHgbNzULLoymOiZFqq"><span
-                        class="fab fa-whatsapp"></span><i> Klik Disini Untuk
-                        Bergabung Ke Grup Mahasiswa Baru</i></a>
+                        class="fab fa-whatsapp"></span> Klik Disini Untuk
+                    Bergabung Ke Grup Mahasiswa Baru</a>
             @elseif (auth()->user()->valid_bayar == null)
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-4 col-form-label">Status</label>
@@ -115,6 +115,6 @@
             @endif
         </div>
     </div>
-    <a class="btn btn-success btn-md float-right" href="{{ url('pembayaran') }}" style="margin-left: 7px;">Lanjut
+    <a class="btn btn-success btn-md float-right" href="{{ url('pembayaran') }}">Lanjut
         Pendaftaran <i class="fas fa-arrow-right"></i></a>
 @endsection

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Datasekolah;
 use App\Models\Sekolah;
 use App\Models\Pmbprodi;
 use App\Models\Pmbsiswa;
 use App\Models\Pmbupload;
 use App\Models\Pmbsekolah;
+use App\Models\Datasekolah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class PendidikanController extends Controller
@@ -20,9 +21,6 @@ class PendidikanController extends Controller
         $upload = Pmbupload::where('upload_id_siswa', auth()->user()->pengenal_akun)->first();
         $cekvalid = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
         $datasekolah = Datasekolah::all();
-        // foreach ($datasekolah as $item) {
-        //     dd($item);
-        // }
         if ($cekvalid->valid_bayar != 2) {
             toastr()->warning('Anda belum tervalidasi', 'Peringatan');
             return redirect()->back();
@@ -37,22 +35,21 @@ class PendidikanController extends Controller
             $validator = Validator::make($request->all(), [
                 'jenis_sekolah' => 'required',
                 'nama_sekolah' => 'required',
-                'jurusan_sekolah' => 'required',
-                'tahun_lulus_sekolah' => 'required',
-                'ijasah_sekolah' => 'nullable',
+                'jurusan_sekolah' => 'required|max:100',
+                'tahun_lulus_sekolah' => 'required|max:4',
+                'ijasah_sekolah' => 'nullable|max:100',
             ]);
         } else {
             $validator = Validator::make($request->all(), [
                 'jenis_sekolah' => 'required',
                 'nama_sekolah' => 'required',
-                'alamat_sekolah' => 'required',
-                'jurusan_sekolah' => 'required',
-                'tahun_lulus_sekolah' => 'required',
-                'ijasah_sekolah' => 'nullable',
-                'nilai_satu' => 'required',
-                'nilai_dua' => 'required',
-                'nilai_tiga' => 'required',
-                'nilai_empat' => 'required',
+                'jurusan_sekolah' => 'required|max:100',
+                'tahun_lulus_sekolah' => 'required|max:4',
+                'ijasah_sekolah' => 'nullable|max:100',
+                'nilai_satu' => 'required|max:10',
+                'nilai_dua' => 'required|max:10',
+                'nilai_tiga' => 'required|max:10',
+                'nilai_empat' => 'required|max:10',
             ]);
         }
 
@@ -133,7 +130,7 @@ class PendidikanController extends Controller
         $extension = $request->file_semester1->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('file_semester1')->move(public_path('assets/berkas/rapor/'), $nama_file);
+            $request->file('file_semester1')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/rapor/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'semes_satu' => $nama_file
@@ -144,13 +141,13 @@ class PendidikanController extends Controller
         } else {
             if (!empty($data->semes_satu)) {
                 // Hapus yang lama dulu foto filenya
-                $path = public_path('assets/berkas/rapor/' . $data->semes_satu);
+                $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/rapor/' . $data->semes_satu);
                 if (file_exists($path)) {
                     @unlink($path);
                 }
             }
 
-            $request->file('file_semester1')->move(public_path('assets/berkas/rapor/'), $nama_file);
+            $request->file('file_semester1')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/rapor/'), $nama_file);
             $data->update([
                 'semes_satu' => $nama_file
             ]);
@@ -178,7 +175,7 @@ class PendidikanController extends Controller
         $extension = $request->file_semester2->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('file_semester2')->move(public_path('assets/berkas/rapor/'), $nama_file);
+            $request->file('file_semester2')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/rapor/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'semes_dua' => $nama_file
@@ -189,13 +186,13 @@ class PendidikanController extends Controller
         } else {
             if (!empty($data->semes_dua)) {
                 // Hapus yang lama dulu foto filenya
-                $path = public_path('assets/berkas/rapor/' . $data->semes_dua);
+                $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/rapor/' . $data->semes_dua);
                 if (file_exists($path)) {
                     @unlink($path);
                 }
             }
 
-            $request->file('file_semester2')->move(public_path('assets/berkas/rapor/'), $nama_file);
+            $request->file('file_semester2')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/rapor/'), $nama_file);
             $data->update([
                 'semes_dua' => $nama_file
             ]);
@@ -223,7 +220,7 @@ class PendidikanController extends Controller
         $extension = $request->file_semester3->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('file_semester3')->move(public_path('assets/berkas/rapor/'), $nama_file);
+            $request->file('file_semester3')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/rapor/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'semes_tiga' => $nama_file
@@ -234,13 +231,13 @@ class PendidikanController extends Controller
         } else {
             if (!empty($data->semes_tiga)) {
                 // Hapus yang lama dulu foto filenya
-                $path = public_path('assets/berkas/rapor/' . $data->semes_tiga);
+                $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/rapor/' . $data->semes_tiga);
                 if (file_exists($path)) {
                     @unlink($path);
                 }
             }
 
-            $request->file('file_semester3')->move(public_path('assets/berkas/rapor/'), $nama_file);
+            $request->file('file_semester3')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/rapor/'), $nama_file);
             $data->update([
                 'semes_tiga' => $nama_file
             ]);
@@ -268,7 +265,7 @@ class PendidikanController extends Controller
         $extension = $request->file_semester4->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('file_semester4')->move(public_path('assets/berkas/rapor/'), $nama_file);
+            $request->file('file_semester4')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/rapor/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'semes_empat' => $nama_file
@@ -279,13 +276,13 @@ class PendidikanController extends Controller
         } else {
             if (!empty($data->semes_empat)) {
                 // Hapus yang lama dulu foto filenya
-                $path = public_path('assets/berkas/rapor/' . $data->semes_empat);
+                $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/rapor/' . $data->semes_empat);
                 if (file_exists($path)) {
                     @unlink($path);
                 }
             }
 
-            $request->file('file_semester4')->move(public_path('assets/berkas/rapor/'), $nama_file);
+            $request->file('file_semester4')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/rapor/'), $nama_file);
             $data->update([
                 'semes_empat' => $nama_file
             ]);

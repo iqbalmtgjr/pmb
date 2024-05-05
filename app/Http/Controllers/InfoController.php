@@ -21,7 +21,8 @@ class InfoController extends Controller
         $biaya = Biayakuliahpmb::all();
         $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
         $jadwal = Pmbjadwal::all();
-        return view('info.infopmb', compact('biaya', 'cekjalur'));
+        $data = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
+        return view('info.infopmb', compact('biaya', 'cekjalur', 'data'));
     }
     public function infoMhs()
     {
@@ -50,11 +51,11 @@ class InfoController extends Controller
     public function postMetodeBayar(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'metode_bayar' => ['required'],
+            'metode_bayar' => 'required',
         ]);
 
         if ($validator->fails()) {
-            toastr()->error('Ada Kesalahan Saat Penginputan!', 'Gagal');
+            toastr()->error('Ada Kesalahan Saat Penginputan!, lebih teliti lagi', 'Gagal');
             return redirect()
                 ->back()
                 ->withErrors($validator)
@@ -78,7 +79,7 @@ class InfoController extends Controller
         ]);
 
         if ($validator->fails()) {
-            toastr()->error('Ada Kesalahan Saat Penginputan!', 'Gagal');
+            toastr()->error('Ada Kesalahan Saat Penginputan!, lebih teliti lagi', 'Gagal');
             return redirect()
                 ->back()
                 ->withErrors($validator)
@@ -89,7 +90,7 @@ class InfoController extends Controller
         $extension = $request->foto->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
         if ($data == false) {
-            $request->file('foto')->move(public_path('assets/berkas/bukti/'), $nama_file);
+            $request->file('foto')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/bukti/'), $nama_file);
             Pmbupload::create([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'pembayaran_upload' => $nama_file
@@ -98,13 +99,13 @@ class InfoController extends Controller
             toastr()->success('Bukti berhasil diupload!', 'Selamat');
             return redirect()->back();
         } else {
-            $request->file('foto')->move(public_path('assets/berkas/bukti/'), $nama_file);
+            $request->file('foto')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/bukti/'), $nama_file);
             $data->update([
                 'upload_id_siswa' => auth()->user()->pengenal_akun,
                 'pembayaran_upload' => $nama_file
             ]);
 
-            toastr()->success('Bukti berhasil diupload!', 'Selamat');
+            toastr()->success('Bukti berhasil diupdate!', 'Selamat');
             return redirect()->back();
         }
     }
@@ -128,17 +129,17 @@ class InfoController extends Controller
     public function postKonfirmasi(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama_pengirim' => ['required'],
-            'bank_pengirim' => ['required'],
-            'tanggal_transaksi' => ['required'],
-            'jam_transaksi' => ['required'],
-            'no_referensi' => ['nullable'],
-            'jumlah_pembayaran' => ['required'],
-            'detail_pembayaran' => ['required'],
+            'nama_pengirim' => 'required|max:100',
+            'bank_pengirim' => 'required|max:50',
+            'tanggal_transaksi' => 'required',
+            'jam_transaksi' => 'required',
+            'no_referensi' => 'required|max:100',
+            'jumlah_pembayaran' => 'required|max:11',
+            'detail_pembayaran' => 'required',
         ]);
 
         if ($validator->fails()) {
-            toastr()->error('Ada Kesalahan Saat Penginputan!', 'Gagal');
+            toastr()->error('Ada Kesalahan Saat Penginputan!, lebih teliti lagi', 'Gagal');
             return redirect()
                 ->back()
                 ->withErrors($validator)
@@ -160,6 +161,11 @@ class InfoController extends Controller
         $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
         $item = $request->detail_pembayaran;
         $query = Biayakuliahpmb::whereIn('id_biayakuliahpmb', $item)->get();
+
+        date_default_timezone_set("Asia/Jakarta");
+        $tahun_skrng = date('Y');
+        $tahun_skrngtambah1 = date('Y') + 1;
+
         $point = array();
         if ($cekjalur->jalur == 'test') {
             foreach ($query as $rinci) {
@@ -168,9 +174,10 @@ class InfoController extends Controller
                     'akun_pembayaran' => auth()->user()->pengenal_akun,
                     'jenis_bayar_rinci' => $rinci->id_biayakuliahpmb,
                     'jumlah_rinci' => $rinci->test_biaya,
+                    'user_id_rinci' => auth()->user()->id_siswa,
                     'semester_rinci' => 1,
                     'smt_nama' => 'ganjil',
-                    'tahun_ajaran' => '2023/2024'
+                    'tahun_ajaran' => $tahun_skrng . '/' . $tahun_skrngtambah1
                 );
             }
         } elseif ($cekjalur->jalur == 'prestasi') {
@@ -180,9 +187,10 @@ class InfoController extends Controller
                     'akun_pembayaran' => auth()->user()->pengenal_akun,
                     'jenis_bayar_rinci' => $rinci->id_biayakuliahpmb,
                     'jumlah_rinci' => $rinci->prestasi_biaya,
+                    'user_id_rinci' => auth()->user()->id_siswa,
                     'semester_rinci' => 1,
                     'smt_nama' => 'ganjil',
-                    'tahun_ajaran' => '2023/2024'
+                    'tahun_ajaran' => $tahun_skrng . '/' . $tahun_skrngtambah1
                 );
             }
         } else {
@@ -192,9 +200,10 @@ class InfoController extends Controller
                     'akun_pembayaran' => auth()->user()->pengenal_akun,
                     'jenis_bayar_rinci' => $rinci->id_biayakuliahpmb,
                     'jumlah_rinci' => $rinci->reguler2_biaya,
+                    'user_id_rinci' => auth()->user()->id_siswa,
                     'semester_rinci' => 1,
                     'smt_nama' => 'ganjil',
-                    'tahun_ajaran' => '2023/2024'
+                    'tahun_ajaran' => $tahun_skrng . '/' . $tahun_skrngtambah1
                 );
             }
         }
@@ -212,30 +221,36 @@ class InfoController extends Controller
         ]);
 
         if ($validator->fails()) {
-            toastr()->error('File belum dipilih!', 'Gagal');
+            toastr()->error('Ada kesalahan saat penginputan!, lebih teliti lagi', 'Gagal');
             return redirect()
                 ->back()
                 ->withErrors($validator)
                 ->withInput();
         }
 
-        $data = Buktibayar::where('akunb_msiswa', auth()->user()->pengenal_akun)->first();
+        $data = Buktibayar::find($request->id);
         $extension = $request->bukti->extension();
         $nama_file = round(microtime(true) * 1000) . '.' . $extension;
-        if (!empty($data->bukti_bayar)) {
+        if ($data->bukti_bayar) {
             // Hapus yang lama dulu foto filenya
-            $path = public_path('assets/berkas/bukti/' . $data->bukti_bayar);
+            $path = public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/bukti/' . $data->bukti_bayar);
             if (file_exists($path)) {
                 @unlink($path);
             }
         }
 
-        $request->file('bukti')->move(public_path('assets/berkas/bukti/'), $nama_file);
+        $request->file('bukti')->move(public_path('/../../public_html/daftar.persadakhatulistiwa.ac.id/assets/berkas/bukti/'), $nama_file);
         $data->update([
             'bukti_bayar' => $nama_file
         ]);
 
         toastr()->success('Bukti bayar berhasil diupload!', 'Selamat');
         return redirect()->back();
+    }
+
+    public function getdata($id)
+    {
+        $data = Buktibayar::find($id);
+        return $data;
     }
 }

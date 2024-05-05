@@ -31,20 +31,20 @@
                         <input type="number" class="form-control @error('no_hp') is-invalid @enderror" id="inputNOHP"
                             name="no_hp" placeholder="8xxxxxxxxx"
                             value="{{ $data == true && $data->no_hp != null ? $data->no_hp : old('no_hp') }}">
-                    </div>
                     @error('no_hp')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
+                    </div>
                     {{-- </div> --}}
                 </div>
                 <div class="form-group row">
                     <label for="nohp" class="col-sm-2 col-form-label">Media Informasi<strong
                             style="color: red">*</strong></label>
                     <div class="col-sm-10">
-                        <select id="media_info" name="media_info"
-                            class="form-control  @error('media_info') is-invalid @enderror">
+                        <select name="media_info"
+                            class="form-control @error('media_info') is-invalid @enderror">
                             <option value="">-- Pilih Media Informasi --</option>
                             <option value="brosur"
                                 @if ($data == true && $data->media_info != null) {{ $data->media_info == 'brosur' ? 'selected' : '' }} @else {{ old('media_info') == 'brosur' ? 'selected' : '' }} @endif>

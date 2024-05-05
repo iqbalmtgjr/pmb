@@ -60,6 +60,7 @@ class AuthController extends Controller
             'nis_siswa' => $request->nis_siswa,
             'nama_siswa' => $request->nama_siswa,
             'hp_siswa' => $request->hp_siswa,
+            'valid_bayar' => ""
         ]);
 
         Pmbprodi::create([
@@ -75,7 +76,7 @@ class AuthController extends Controller
             'kunci_akun_siswa' => Hash::make($rand_password),
             'kuncigudang' => $rand_password,
             'status_akun' => 0,
-            'gelombang' => 1,
+            'gelombang' => 2,
             'alamat_ip_daftar' => $request->ip(),
             'daftar_akun' => now()->timestamp,
         ]);
@@ -88,7 +89,7 @@ class AuthController extends Controller
         \Mail::to($request->email_akun_siswa)->send(new SendAkun($akun));
 
         toastr()->success('Akun berhasil dibuat! Cek email anda untuk melihat password yang digunakan.', 'Selamat');
-        return redirect('/')->with('sukses', 'Cek email anda untuk melihat password');
+        return redirect('/login')->with('sukses', 'Cek email anda untuk melihat password');
     }
 
     public function login()
@@ -117,14 +118,13 @@ class AuthController extends Controller
             'kunci_akun_siswa' => $request->kunci_akun_siswa,
         ];
 
-
         if (Auth::attempt($credentials)) {
             $data = Pmbakun::where('pengenal_akun', auth()->user()->pengenal_akun)->first();
             $data->update([
                 'last_login_siswa' => now()->timestamp,
                 'alamat_ip_login' => $request->ip(),
             ]);
-            toastr()->success('Anda berhasil login!', 'Selamat');
+            toastr()->success('Sistem Informasi Pendaftaran Mahasiswa', 'Selamat Datang di SIPEMA '.auth()->user()->nama_siswa);
             return redirect('/infoPmb');
         }
 
@@ -135,6 +135,6 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect('/login');
     }
 }

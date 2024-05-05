@@ -34,7 +34,6 @@
                                 Madrasah Aliyah Kejuruan
                             </option>
                         </select>
-
                         @error('jenis_sekolah')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -43,12 +42,11 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="namasekolah" class="col-sm-2 col-form-label">Nama Sekolah<strong
+                    <label for="nama_sekolah" class="col-sm-2 col-form-label">Nama Sekolah<strong
                             style="color: red">*</strong></label>
                     <div class="col-sm-10">
                         <select class="form-control select2 @error('nama_sekolah') is-invalid @enderror" name="nama_sekolah"
                             data-placeholder="-- Cari Sekolah --" style="width: 100%;">
-                            <option value="">-- Cari Sekolah --</option>
                             @foreach ($datasekolah as $item)
                                 <option value="{{ $item->id_data_sekolah }}"
                                     @if ($data == true && $data->data_sekolah_id != null) {{ $data->data_sekolah_id == $item->id_data_sekolah ? 'selected' : '' }} @else {{ old('nama_sekolah') == $item->id_data_sekolah ? 'selected' : '' }} @endif>
@@ -254,7 +252,7 @@
             $(document).ready(function() {
                 $('.select2').select2();
             });
-
+            
             $(function() {
                 $.ajaxSetup({
                     headers: {

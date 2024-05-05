@@ -38,7 +38,7 @@ return [
     'digits_between' => ':attribute harus terdiri dari :min sampai :max angka.',
     'dimensions'     => ':attribute tidak memiliki dimensi gambar yang valid.',
     'distinct'       => ':attribute memiliki nilai yang duplikat.',
-    'email'          => ':attribute harus berupa alamat surel yang valid.',
+    'email'          => ':attribute harus berupa alamat email yang valid.',
     'ends_with'      => ':attribute harus diakhiri salah satu dari berikut: :values',
     'exists'         => ':attribute yang dipilih tidak valid.',
     'file'           => ':attribute harus berupa sebuah berkas.',

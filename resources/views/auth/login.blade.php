@@ -6,8 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description"
+        content="Pendaftaran mahasiswa baru di STKIP Persada Khatulistiwa merupakan pengalaman yang menyenangkan, tanpa harus datang langsung ke kampus, pastikan kamu sudah kenal dengan STKIP Persada Khatulistiwa, tempat yang menyajikan pendidikan dan karir yang membanggakan.">
+    <meta name="author" content="STKIP Persada Khatulistiwa, yang menyajikan pendidikan dan karir yang membanggakan.">
 
     <title>Login PMB STKIP Persada Khatulistiwa</title>
 
@@ -47,7 +48,7 @@
                         </button>
                     </div>
                 @endif
-                <div class="card o-hidden border-0 shadow-lg my-3">
+                <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
 
@@ -83,15 +84,15 @@
                                             @enderror
                                         </div>
                                         <div class="form-group row">
-                                            {{-- <div class="col-12"> --}}
-                                            {!! NoCaptcha::display() !!}
-                                            {!! NoCaptcha::renderJs() !!}
-                                            @error('g-recaptcha-response')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                            {{-- </div> --}}
+                                            <div class="col-12">
+                                                {!! NoCaptcha::display() !!}
+                                                {!! NoCaptcha::renderJs() !!}
+                                                @error('g-recaptcha-response')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
@@ -99,7 +100,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="{{ url('register') }}">Belum punya akun? Buat Akun
+                                        <a class="small" href="{{ url('/') }}">Belum punya akun? Buat Akun
                                             Sekarang!</a>
                                     </div>
                                 </div>

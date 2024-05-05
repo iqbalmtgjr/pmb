@@ -12,9 +12,4 @@ class Datasekolah extends Model
     protected $primaryKey = 'id_data_sekolah';
     protected $guarded = ['id_data_sekolah'];
     public $timestamps = false;
-
-    public function pmbsekolah()
-    {
-        return $this->hasOne(Pmbsekolah::class);
-    }
 }

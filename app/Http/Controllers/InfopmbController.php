@@ -17,7 +17,7 @@ class InfopmbController extends Controller
             toastr()->warning('Anda belum tervalidasi', 'Peringatan');
             return redirect()->back();
         }
-        return view('infopmb.index', compact('data'));
+        return view('infopmb.index', compact('data', 'cekvalid'));
     }
 
     public function store(Request $request)
@@ -27,7 +27,7 @@ class InfopmbController extends Controller
         ]);
 
         if ($validator->fails()) {
-            toastr()->error('Ada Kesalahan Saat Penginputan!', 'Gagal');
+            toastr()->error('Ada Kesalahan Saat Penginputan!, lebih teliti lagi', 'Gagal');
             return redirect()
                 ->back()
                 ->withErrors($validator)
