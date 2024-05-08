@@ -128,23 +128,23 @@
                                         <select id="prodi2" name="prodi2"
                                             class="form-control @error('prodi2') is-invalid @enderror">
                                             <option value=" ">-- PILIHAN PRODI 2 --</option>
-                                            <option value="1" @selected(old('prodi') == '1')>Pendidikan Bahasa dan
+                                            <option value="1" @selected(old('prodi2') == '1')>Pendidikan Bahasa dan
                                                 Sastra Indonesia</option>
-                                            <option value="2" @selected(old('prodi') == '2')>Pendidikan Matematika
+                                            <option value="2" @selected(old('prodi2') == '2')>Pendidikan Matematika
                                             </option>
-                                            <option value="3" @selected(old('prodi') == '3')>Pendidikan Ekonomi
+                                            <option value="3" @selected(old('prodi2') == '3')>Pendidikan Ekonomi
                                             </option>
-                                            <option value="4" @selected(old('prodi') == '4')>Pendidikan Pancasila
+                                            <option value="4" @selected(old('prodi2') == '4')>Pendidikan Pancasila
                                                 dan Kewarganegaraan</option>
-                                            <option value="5" @selected(old('prodi') == '5')>Pendidikan Komputer
+                                            <option value="5" @selected(old('prodi2') == '5')>Pendidikan Komputer
                                             </option>
-                                            <option value="6" @selected(old('prodi') == '6')>Pendidikan Biologi
+                                            <option value="6" @selected(old('prodi2') == '6')>Pendidikan Biologi
                                             </option>
-                                            <option value="7" @selected(old('prodi') == '7')>Pendidikan Anak Usia
+                                            <option value="7" @selected(old('prodi2') == '7')>Pendidikan Anak Usia
                                                 Dini</option>
-                                            <option value="8" @selected(old('prodi') == '8')>Pendidikan Bahasa
+                                            <option value="8" @selected(old('prodi2') == '8')>Pendidikan Bahasa
                                                 Inggris</option>
-                                            <option value="9" @selected(old('prodi') == '9')>Pendidikan Guru
+                                            <option value="9" @selected(old('prodi2') == '9')>Pendidikan Guru
                                                 Sekolah
                                                 Dasar</option>
                                         </select>
@@ -219,6 +219,7 @@
         $(document).ready(function() {
             $("#prodi").change(function() {
                 let selectedProdi1 = $(this).val();
+                let selectedProdi2 = $("#prodi2").val();
                 $("#prodi2 option").each(function() {
                     if ($(this).val() == selectedProdi1) {
                         $(this).prop("disabled", true);
@@ -228,9 +229,13 @@
                         $(this).show();
                     }
                 });
+                if (selectedProdi1 == selectedProdi2) {
+                    $("#prodi2").val("");
+                }
             });
             $("#prodi2").change(function() {
                 let selectedProdi2 = $(this).val();
+                let selectedProdi1 = $("#prodi").val();
                 $("#prodi option").each(function() {
                     if ($(this).val() == selectedProdi2) {
                         $(this).prop("disabled", true);
@@ -240,6 +245,14 @@
                         $(this).show();
                     }
                 });
+                if (selectedProdi1 == selectedProdi2) {
+                    $("#prodi").val("");
+                }
+                // Reset selected option if form validation fails
+                if ($("#register-form").find(".invalid-feedback").length > 0) {
+                    $("#prodi").val("");
+                    $("#prodi2").val("");
+                }
             });
 
         });
